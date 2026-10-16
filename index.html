@@ -645,6 +645,87 @@ body:has(dialog[open]){overflow:hidden}
 #proceso{padding-bottom:48px}
 #automatizaciones{padding-top:48px}
 @media (max-width:860px){#proceso{padding-bottom:32px}#automatizaciones{padding-top:32px}}
+
+/* ---- Optimización para celular ---- */
+a,button,summary,label{-webkit-tap-highlight-color:rgba(139,156,255,.15)}
+@media (hover:none){
+  .auto:hover,.tile.spot:hover,.form.spot:hover,.qa:hover{transform:none}
+  .spot::before,.spot::after{display:none}
+}
+@media (max-width:640px){
+  section{padding:64px 0}
+  .head{margin-bottom:28px}
+  #proceso{padding-bottom:28px}
+  #automatizaciones{padding-top:28px}
+  /* Encabezado: CTA siempre visible, todo a 42 px */
+  .header-inner{height:62px}
+  .mobile-nav{inset:62px 0 auto 0}
+  .header .logo-mark{width:42px;height:42px;border-radius:11px}
+  .header-right .btn-white{display:inline-flex!important;height:42px;padding:0 14px;font-size:13.5px;border-radius:11px}
+  .menu-btn{width:42px;height:42px;border-radius:11px}
+  /* Zonas de toque */
+  .announce{min-height:34px}
+  .announce::after{content:"";position:absolute;inset:-6px -4px}
+  .rchip{height:42px;padding:0 16px}
+  .f-cols a{padding:9px 0}
+  .wa-line a{min-height:44px}
+  .faq-q summary{min-height:56px}
+  /* Textos mínimos legibles */
+  .label{font-size:12px}
+  .a-cat,.a-kpi small,.step .when,.cp-cat,.out-l,.rf .scale{font-size:12px}
+  /* Automatizaciones más compactas */
+  .auto{padding:18px;min-height:0}
+  .auto p{display:none}
+  .auto.custom p{display:block}
+  .auto b{margin-top:14px;font-size:16px}
+  .a-kpi{padding-top:12px}
+  .a-more{margin-top:10px;min-height:28px}
+  .auto-grid{gap:10px}
+  .steps{gap:26px}
+  /* Ventanas a pantalla completa */
+  .dlg,.dlg-wide,.dlg-xl{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0}
+  .dlg-in{height:100%;max-height:100dvh;border-radius:0;border:0;padding:18px 16px calc(28px + env(safe-area-inset-bottom))}
+  .dlg[open]{animation:sheetIn .35s cubic-bezier(.2,.8,.2,1)}
+  .dlg-x{position:fixed;top:calc(10px + env(safe-area-inset-top));right:10px;width:44px;height:44px;z-index:10;background:rgba(18,19,25,.92);backdrop-filter:blur(8px)}
+  .dlg-t{padding-right:52px}
+  .dlg .btn-sm{height:44px;font-size:14px}
+  .dlg .calc{border-radius:14px}
+  .range{height:34px}
+  .range::-webkit-slider-thumb{width:26px;height:26px;margin-top:-11px}
+  .range::-moz-range-thumb{width:24px;height:24px}
+  /* Rendimiento: efectos más livianos */
+  body::after{display:none}
+  .rays i{filter:blur(16px)}
+  .header.scrolled{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  .wa-float{right:14px;bottom:calc(14px + env(safe-area-inset-bottom))}
+}
+@keyframes sheetIn{from{opacity:0;transform:translateY(28px)}}
+@media (max-width:400px){
+  .cta-long{display:none}
+  .header .logo{font-size:16px}
+}
+
+.t-s{display:none}
+@media (max-width:640px){
+  .auto-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .auto{padding:16px 14px}
+  .auto .a-cat,.auto .a-more{display:none}
+  .auto .t-l{display:none}
+  .auto .t-s{display:inline}
+  .auto b{font-size:15px;margin-top:12px}
+  .a-ic{width:34px;height:34px}
+  .a-kpi em{font-size:19px}
+  .auto.custom{grid-column:1 / -1}
+  .auto.custom .a-more{display:inline-flex}
+  .steps{gap:22px}
+  .step{display:grid;grid-template-columns:40px 1fr;column-gap:14px}
+  .step .step-n{grid-row:1 / span 3}
+  .step h3{margin-top:2px}
+  .step p{max-width:none;margin-top:4px}
+  .step .when{margin-top:6px}
+  .f-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%}
+}
+.header-right .btn-white{gap:4px}
 </style>
 </head>
 <body>
@@ -699,7 +780,7 @@ body:has(dialog[open]){overflow:hidden}
       <a href="#faq">Preguntas</a>
     </nav>
     <div class="header-right">
-      <a class="btn btn-white btn-sm" href="#contacto">Agendar diagnóstico</a>
+      <a class="btn btn-white btn-sm" href="#contacto">Agendar<span class="cta-long">diagnóstico</span></a>
       <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mnav"><svg class="i"><use href="#menu"/></svg></button>
     </div>
   </div>
@@ -1234,7 +1315,7 @@ body:has(dialog[open]){overflow:hidden}
     industria: 'Seguimiento de órdenes de producción, alertas de insumos críticos y reportes semanales automáticos.',
   };
   const grid = $('#autoGrid'), dlgCaso = $('#caseDlg'), dlgCalc = $('#calcDlg');
-  grid.innerHTML = cases.map((c, k) => `<button type="button" class="auto spot" data-k="${k}"><span class="a-top"><span class="a-ic"><svg class="i"><use href="#${c.ic}"/></svg></span><span class="a-cat">${c.cat}</span></span><b>${c.h}</b><p>${c.d}</p><span class="a-kpi"><em>${c.kpi}</em><small>${c.kl}</small></span><span class="a-more">Ver antes y después <svg class="i i-sm"><use href="#arrow"/></svg></span></button>`).join('')
+  grid.innerHTML = cases.map((c, k) => `<button type="button" class="auto spot" data-k="${k}"><span class="a-top"><span class="a-ic"><svg class="i"><use href="#${c.ic}"/></svg></span><span class="a-cat">${c.cat}</span></span><b><span class="t-l">${c.h}</span><span class="t-s">${c.t}</span></b><p>${c.d}</p><span class="a-kpi"><em>${c.kpi}</em><small>${c.kl}</small></span><span class="a-more">Ver antes y después <svg class="i i-sm"><use href="#arrow"/></svg></span></button>`).join('')
     + `<a href="#contacto" class="auto spot custom"><span class="a-ic"><svg class="i"><use href="#plus"/></svg></span><b>¿Tenés otro proceso manual?</b><p>Si sigue una regla clara y repetitiva, lo podemos automatizar sin cambiar tus sistemas.</p><span class="a-more">Contanos tu caso <svg class="i i-sm"><use href="#arrow"/></svg></span></a>`;
   grid.querySelectorAll('.spot').forEach(el => el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); el.style.setProperty('--x', (e.clientX - r.left) + 'px'); el.style.setProperty('--y', (e.clientY - r.top) + 'px'); }));
 
