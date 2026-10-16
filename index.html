@@ -75,13 +75,13 @@ p{margin:0}
 @media (max-width:400px){.header-right .btn-white{display:none}}
 
 /* HERO */
-.hero{position:relative;padding:76px 0 0;text-align:center;isolation:isolate}
+.hero{position:relative;padding:44px 0 0;text-align:center;isolation:isolate}
 .hero-bg{position:absolute;inset:-64px 0 0;z-index:-1;overflow:hidden;pointer-events:none}
 .hero-bg::before{content:"";position:absolute;left:50%;top:-340px;width:1400px;height:900px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(120,136,255,.22),rgba(120,136,255,.06) 55%,transparent 75%)}
 .hero-bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 60% 50% at 50% 0%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 0%,#000 20%,transparent 75%);opacity:.6}
-.announce{display:inline-flex;align-items:center;gap:10px;padding:5px 14px 5px 5px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);font-size:12.5px;color:var(--muted);transition:border-color .2s,color .2s}
+.announce{display:inline-flex;align-items:center;gap:10px;padding:3px 12px 3px 3px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);font-size:12.5px;line-height:1.4;color:var(--muted);transition:border-color .2s,color .2s}
 .announce:hover{border-color:var(--line-3);color:var(--text)}
-.announce b{font-weight:500;color:var(--text);background:rgba(139,156,255,.14);border:1px solid rgba(139,156,255,.3);padding:2px 9px;border-radius:999px;font-size:12px}
+.announce b{font-weight:500;color:var(--text);background:rgba(139,156,255,.14);border:1px solid rgba(139,156,255,.3);padding:1px 8px;border-radius:999px;font-size:12px}
 .hero h1{font-size:clamp(36px,5.4vw,62px);letter-spacing:-.045em;line-height:1.06;margin:24px auto 0;max-width:820px;padding-bottom:.06em}
 .hero .sub{max-width:540px;margin:20px auto 0;font-size:clamp(15px,1.25vw,16.5px);color:var(--muted);line-height:1.6}
 .hero .sub strong{color:var(--text);font-weight:500}
@@ -90,7 +90,7 @@ p{margin:0}
 .hero-note{margin-top:22px;display:flex;justify-content:center;flex-wrap:wrap;gap:8px 20px;font-size:12.5px;color:var(--muted)}
 .hero-note span{display:inline-flex;align-items:center;gap:7px}
 .hero-note .i{color:var(--green);width:15px;height:15px}
-@media (max-width:520px){.hero{padding-top:56px}.hero-ctas .btn{width:100%}}
+@media (max-width:520px){.hero{padding-top:32px}.hero-ctas .btn{width:100%}}
 
 /* Product window */
 .product{position:relative;margin:60px auto 0;max-width:1220px;perspective:1800px}
@@ -455,7 +455,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @keyframes sway{to{transform:translateX(-50%) rotate(calc(var(--r) + 5deg))}}
 @keyframes raysIn{to{opacity:1}}
 
-.wm{position:relative;margin:30px auto 0;font-size:clamp(56px,15.5vw,228px);font-weight:600;letter-spacing:-.065em;line-height:.92;white-space:nowrap;user-select:none;will-change:transform,opacity}
+.wm{position:relative;margin:16px auto 0;font-size:clamp(56px,15.5vw,228px);font-weight:600;letter-spacing:-.065em;line-height:.92;white-space:nowrap;user-select:none;will-change:transform,opacity}
 .wm::before{content:"";position:absolute;left:50%;top:55%;width:70%;height:70%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(139,156,255,.28),transparent);filter:blur(40px);opacity:0;animation:raysIn 2.4s ease .6s forwards;z-index:-1}
 .wm-base span{display:inline-block;background:linear-gradient(180deg,#fff 12%,#D3D7E0 42%,#8A90A0 72%,#3A3F4B 100%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;filter:blur(18px);transform:translateY(.22em) scale(1.08);animation:wmIn 1.6s cubic-bezier(.16,.84,.24,1) forwards;animation-delay:calc(var(--i) * 65ms + 250ms)}
 @keyframes wmIn{to{opacity:1;filter:blur(0);transform:none}}
@@ -473,7 +473,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .logo-mark{width:30px;height:30px;border-radius:8px;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 0 24px rgba(139,156,255,.35)}
 .logo-mark svg{width:17px;height:17px}
 
-@media (max-width:520px){.wm{margin-top:24px}.rays{width:900px;height:700px}.rays i{width:160px}}
+@media (max-width:520px){.wm{margin-top:14px}.rays{width:900px;height:700px}.rays i{width:160px}}
 @media (prefers-reduced-motion:reduce){
   .wm-base span{opacity:1;filter:none;transform:none}
   .wm-flare{transform:translateX(-50%) scaleX(1);opacity:.35}
@@ -622,6 +622,10 @@ body:has(dialog[open]){overflow:hidden}
 .dlg-act{display:flex;gap:10px;flex-wrap:wrap}
 .dlg .calc{margin-top:22px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
 @media (max-width:560px){.dlg-in{padding:22px}.dlg-act{width:100%}.dlg-act .btn{flex:1}}
+.dlg-xl{width:min(1180px,calc(100vw - 24px))}
+.dlg .demo{margin-top:22px}
+.dlg-t em{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.1em;padding-right:.08em;background:linear-gradient(180deg,#fff 0%,#C3CBFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:560px){.dlg .demo .demo-in,.dlg .demo .demo-out{padding:16px}}
 </style>
 </head>
 <body>
@@ -668,7 +672,7 @@ body:has(dialog[open]){overflow:hidden}
   <div class="container header-inner">
     <a href="#top" class="logo" aria-label="Automatika, inicio"><span class="logo-mark"><svg class="i"><use href="#logo"/></svg></span>Automatika</a>
     <nav class="nav" aria-label="Principal">
-      <a href="#demo">Demo</a>
+      <a href="#demo" data-open="demo">Demo</a>
       <a href="#proceso">Cómo trabajamos</a>
       <a href="#automatizaciones">Automatizaciones</a>
       <a href="#calculadora" data-open="calc">Calculadora</a>
@@ -681,7 +685,7 @@ body:has(dialog[open]){overflow:hidden}
     </div>
   </div>
   <nav class="mobile-nav" id="mnav" aria-label="Menú móvil">
-    <a href="#demo">Probá la demo</a><a href="#proceso">Cómo trabajamos</a><a href="#automatizaciones">Automatizaciones</a><a href="#calculadora" data-open="calc">Calculadora</a><a href="#faq">Preguntas frecuentes</a>
+    <a href="#demo" data-open="demo">Probá la demo</a><a href="#proceso">Cómo trabajamos</a><a href="#automatizaciones">Automatizaciones</a><a href="#calculadora" data-open="calc">Calculadora</a><a href="#faq">Preguntas frecuentes</a>
     <a href="#contacto" class="btn btn-white">Agendar diagnóstico sin cargo</a>
   </nav>
 </header>
@@ -690,58 +694,17 @@ body:has(dialog[open]){overflow:hidden}
 <section class="hero" aria-labelledby="h1">
   <div class="hero-bg"><div class="rays" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="hero-spot"></div></div>
   <div class="container">
-    <a href="#demo" class="announce rv"><b>Nuevo</b> <span class="shim">Probá la IA con tu propia factura</span> <svg class="i i-sm"><use href="#chev"/></svg></a>
+    <a href="#demo" data-open="demo" class="announce rv"><b>Nuevo</b> <span class="shim">Probá la IA con tu propia factura</span> <svg class="i i-sm"><use href="#chev"/></svg></a>
     <div class="wm" aria-hidden="true"><div class="wm-flare"></div><div class="wm-base" id="wmBase">Automatika</div><div class="wm-shine">Automatika</div></div>
     <h1 id="h1"><span class="sr-only">Automatika: </span>Tu empresa, funcionando en <em>piloto automático.</em></h1>
     <p class="sub rv d2">Automatizamos las tareas repetitivas de tu empresa con IA. Conectamos <strong>WhatsApp, planillas, cobros y tu ERP</strong> sin cambiar los sistemas que ya usás.</p>
     <div class="quick rv d3">
-      <a href="#demo" class="qa"><span class="qi"><svg class="i"><use href="#file"/></svg></span><span><b>Probá la demo</b><small>Mirá una factura leerse sola</small></span><svg class="i i-sm go"><use href="#arrow"/></svg></a>
+      <a href="#demo" data-open="demo" class="qa"><span class="qi"><svg class="i"><use href="#file"/></svg></span><span><b>Probá la demo</b><small>Mirá una factura leerse sola</small></span><svg class="i i-sm go"><use href="#arrow"/></svg></a>
       <a href="#automatizaciones" class="qa"><span class="qi"><svg class="i"><use href="#bolt"/></svg></span><span><b>Automatizaciones</b><small>8 procesos según tu rubro</small></span><svg class="i i-sm go"><use href="#arrow"/></svg></a>
       <a href="#calculadora" class="qa" data-open="calc"><span class="qi"><svg class="i"><use href="#chart"/></svg></span><span><b>Calculá tu ahorro</b><small>Horas y dinero que recuperás</small></span><svg class="i i-sm go"><use href="#arrow"/></svg></a>
       <a href="https://wa.me/5491136826065?text=Hola%20Automatika%2C%20quiero%20consultar%20por%20una%20soluci%C3%B3n%20de%20automatizaci%C3%B3n%20para%20mi%20empresa." target="_blank" rel="noopener" class="qa wa"><span class="qi"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg></span><span><b>Hablá por WhatsApp</b><small>Te responde un ingeniero</small></span><svg class="i i-sm go"><use href="#arrow"/></svg></a>
     </div>
 
-  </div>
-</section>
-
-<section id="demo" aria-labelledby="demo-h">
-  <div class="container">
-    <div class="head">
-      <div class="rv"><span class="label">Demo en vivo</span><h2 class="h2 grad" id="demo-h">Probá la IA con <em>tu propia factura.</em></h2></div>
-      <p class="lede rv d1">Subí una factura en PDF o una foto y mirá cómo la leemos, la validamos con el QR de ARCA y la dejamos lista para cargar en tu sistema. En segundos.</p>
-    </div>
-    <div class="spot demo rv">
-      <div class="demo-in">
-        <label class="drop" id="drop" for="demoFile" tabindex="0">
-          <input type="file" id="demoFile" accept="application/pdf,image/jpeg,image/png,image/webp" class="sr-only" tabindex="-1">
-          <span class="drop-ic"><svg class="i"><use href="#file"/></svg></span>
-          <b>Arrastrá tu factura acá</b>
-          <span>o hacé clic para elegir un PDF o una foto (hasta 3 MB)</span>
-        </label>
-        <div class="demo-prev" id="demoPrev" hidden>
-          <img id="demoImg" alt="Vista previa del comprobante">
-          <div><b id="demoName"></b><span id="demoSize"></span></div>
-          <button type="button" id="demoReset" class="btn btn-ghost btn-sm">Probar otra</button>
-        </div>
-        <button class="btn btn-ghost" id="demoSample" type="button"><svg class="i i-sm"><use href="#spark"/></svg>Usar una factura de ejemplo</button>
-        <p class="demo-priv"><svg class="i i-sm"><use href="#lock"/></svg>No guardamos tus archivos: se procesan y se descartan. Si preferís, probá con la factura de ejemplo.</p>
-      </div>
-      <div class="demo-out" aria-live="polite">
-        <ol class="dsteps" id="dsteps">
-          <li><span class="ds-ic"></span>Leyendo el archivo</li>
-          <li><span class="ds-ic"></span>Extrayendo datos con IA</li>
-          <li><span class="ds-ic"></span>Validando con el QR de ARCA</li>
-          <li><span class="ds-ic"></span>Listo para cargar en tu ERP</li>
-        </ol>
-        <div class="demo-empty" id="demoEmpty">
-          <div class="sk h"></div><div class="sk w40"></div>
-          <div class="sk-grid"><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
-          <div class="sk w80"></div><div class="sk"></div>
-          <p>Los datos de tu factura van a aparecer acá.</p>
-        </div>
-        <div class="demo-res" id="demoRes" hidden></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -873,6 +836,47 @@ body:has(dialog[open]){overflow:hidden}
 </section>
 </main>
 
+<dialog class="dlg dlg-xl" id="demoDlg" aria-labelledby="demoT">
+  <div class="dlg-in">
+    <button type="button" class="dlg-x" aria-label="Cerrar"><svg class="i"><use href="#close"/></svg></button>
+    <span class="label">Demo en vivo</span>
+    <h3 class="dlg-t" id="demoT">Probá la IA con <em>tu propia factura.</em></h3>
+    <p class="cp-d">Subí una factura en PDF o una foto y mirá cómo la leemos, la validamos con el QR de ARCA y la dejamos lista para cargar en tu sistema.</p>
+    <div class="spot demo">
+      <div class="demo-in">
+        <label class="drop" id="drop" for="demoFile" tabindex="0">
+          <input type="file" id="demoFile" accept="application/pdf,image/jpeg,image/png,image/webp" class="sr-only" tabindex="-1">
+          <span class="drop-ic"><svg class="i"><use href="#file"/></svg></span>
+          <b>Arrastrá tu factura acá</b>
+          <span>o hacé clic para elegir un PDF o una foto (hasta 3 MB)</span>
+        </label>
+        <div class="demo-prev" id="demoPrev" hidden>
+          <img id="demoImg" alt="Vista previa del comprobante">
+          <div><b id="demoName"></b><span id="demoSize"></span></div>
+          <button type="button" id="demoReset" class="btn btn-ghost btn-sm">Probar otra</button>
+        </div>
+        <button class="btn btn-ghost" id="demoSample" type="button"><svg class="i i-sm"><use href="#spark"/></svg>Usar una factura de ejemplo</button>
+        <p class="demo-priv"><svg class="i i-sm"><use href="#lock"/></svg>No guardamos tus archivos: se procesan y se descartan. Si preferís, probá con la factura de ejemplo.</p>
+      </div>
+      <div class="demo-out" aria-live="polite">
+        <ol class="dsteps" id="dsteps">
+          <li><span class="ds-ic"></span>Leyendo el archivo</li>
+          <li><span class="ds-ic"></span>Extrayendo datos con IA</li>
+          <li><span class="ds-ic"></span>Validando con el QR de ARCA</li>
+          <li><span class="ds-ic"></span>Listo para cargar en tu ERP</li>
+        </ol>
+        <div class="demo-empty" id="demoEmpty">
+          <div class="sk h"></div><div class="sk w40"></div>
+          <div class="sk-grid"><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+          <div class="sk w80"></div><div class="sk"></div>
+          <p>Los datos de tu factura van a aparecer acá.</p>
+        </div>
+        <div class="demo-res" id="demoRes" hidden></div>
+      </div>
+    </div>
+  </div>
+</dialog>
+
 <dialog class="dlg" id="caseDlg" aria-labelledby="caseDlgT">
   <div class="dlg-in">
     <button type="button" class="dlg-x" aria-label="Cerrar"><svg class="i"><use href="#close"/></svg></button>
@@ -908,7 +912,7 @@ body:has(dialog[open]){overflow:hidden}
     <div class="f-top">
       <div><a href="#top" class="logo"><span class="logo-mark"><svg class="i"><use href="#logo"/></svg></span>Automatika</a><p class="tag">Automatización inteligente de procesos para PyMEs y negocios.</p></div>
       <div class="f-cols">
-        <div><h4>Producto</h4><a href="#demo">Demo</a><a href="#automatizaciones">Automatizaciones</a><a href="#calculadora" data-open="calc">Calculadora</a></div>
+        <div><h4>Producto</h4><a href="#demo" data-open="demo">Demo</a><a href="#automatizaciones">Automatizaciones</a><a href="#calculadora" data-open="calc">Calculadora</a></div>
         <div><h4>Empresa</h4><a href="#proceso">Cómo trabajamos</a><a href="#faq">Preguntas</a></div>
         <div><h4>Contacto</h4><a href="#contacto">Diagnóstico</a><a target="_blank" rel="noopener" href="https://wa.me/5491136826065">WhatsApp</a></div>
       </div>
@@ -1146,7 +1150,7 @@ body:has(dialog[open]){overflow:hidden}
         ? `<b>${okQR ? 'Validada contra el QR de ARCA' : 'Hay diferencias con el QR de ARCA'}</b><ul>${checks.map(([k, ok]) => `<li class="${ok ? 'y' : 'n'}"><svg class="i i-sm"><use href="#${ok ? 'checkc' : 'xc'}"/></svg>${k} ${ok ? 'coincide' : 'no coincide'}</li>`).join('')}</ul>`
         : `<b>No encontramos un QR de ARCA legible</b><p>En fotos el QR a veces no se lee. En una implementación real también se puede constatar el comprobante directamente en ARCA.</p>`}</div>
       ${d.observaciones ? `<p class="r-obs">${esc(d.observaciones)}</p>` : ''}
-      <div class="r-act"><button type="button" class="btn btn-ghost btn-sm" id="rJson" aria-expanded="false">Ver JSON para tu sistema</button><a href="#contacto" class="btn btn-white btn-sm" id="rCta">Quiero automatizar mis facturas <svg class="i i-sm arrow"><use href="#arrow"/></svg></a></div>
+      <div class="r-act"><button type="button" class="btn btn-ghost btn-sm" id="rJson" aria-expanded="false">Ver JSON para tu sistema</button><a href="#contacto" class="btn btn-white btn-sm" id="rCta" data-close>Quiero automatizar mis facturas <svg class="i i-sm arrow"><use href="#arrow"/></svg></a></div>
       <pre class="r-json" id="rJsonPre" hidden>${esc(JSON.stringify(d, null, 2))}</pre>`;
     D.empty.hidden = true; D.res.hidden = false;
     $('#rJson').onclick = e => { const pre = $('#rJsonPre'); pre.hidden = !pre.hidden; e.currentTarget.setAttribute('aria-expanded', String(!pre.hidden)); e.currentTarget.textContent = pre.hidden ? 'Ver JSON para tu sistema' : 'Ocultar JSON'; };
@@ -1230,6 +1234,8 @@ body:has(dialog[open]){overflow:hidden}
   grid.addEventListener('click', e => { const b = e.target.closest('.auto[data-k]'); if (b) abrirCaso(+b.dataset.k); });
 
   document.addEventListener('click', e => {
+    const abreDemo = e.target.closest('[data-open="demo"]');
+    if (abreDemo) { e.preventDefault(); setM(false); $$('dialog[open]').forEach(d => d.close()); $('#demoDlg').showModal(); return; }
     const abre = e.target.closest('[data-open="calc"]');
     if (abre) { e.preventDefault(); setM(false); if (dlgCaso.open) dlgCaso.close(); dlgCalc.showModal(); return; }
     const caso = e.target.closest('#caseDlg [data-case]');
@@ -1237,6 +1243,7 @@ body:has(dialog[open]){overflow:hidden}
     if (e.target.closest('.dlg-x') || e.target.closest('[data-close]')) { e.target.closest('dialog').close(); return; }
     if (e.target.matches('dialog.dlg')) e.target.close();
   });
+  if (location.hash === '#demo') $('#demoDlg').showModal();
 })();
 </script>
 </body>
