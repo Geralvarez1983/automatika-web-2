@@ -626,6 +626,12 @@ body:has(dialog[open]){overflow:hidden}
 .dlg .demo{margin-top:22px}
 .dlg-t em{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.005em;font-size:1.1em;padding-right:.08em;background:linear-gradient(180deg,#fff 0%,#C3CBFF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 @media (max-width:560px){.dlg .demo .demo-in,.dlg .demo .demo-out{padding:16px}}
+.wm{pointer-events:none}
+.announce{position:relative;z-index:3}
+.dlg .product{margin:22px 0 0;max-width:none}
+.dlg .product::before,.dlg .product::after{display:none}
+.dlg .window{transform:none;box-shadow:none}
+#proceso .metrics{margin-top:0}
 </style>
 </head>
 <body>
@@ -672,6 +678,7 @@ body:has(dialog[open]){overflow:hidden}
   <div class="container header-inner">
     <a href="#top" class="logo" aria-label="Automatika, inicio"><span class="logo-mark"><svg class="i"><use href="#logo"/></svg></span>Automatika</a>
     <nav class="nav" aria-label="Principal">
+      <a href="#flujos" data-open="flujos">Flujos</a>
       <a href="#demo" data-open="demo">Demo</a>
       <a href="#proceso">Cómo trabajamos</a>
       <a href="#automatizaciones">Automatizaciones</a>
@@ -685,7 +692,7 @@ body:has(dialog[open]){overflow:hidden}
     </div>
   </div>
   <nav class="mobile-nav" id="mnav" aria-label="Menú móvil">
-    <a href="#demo" data-open="demo">Probá la demo</a><a href="#proceso">Cómo trabajamos</a><a href="#automatizaciones">Automatizaciones</a><a href="#calculadora" data-open="calc">Calculadora</a><a href="#faq">Preguntas frecuentes</a>
+    <a href="#flujos" data-open="flujos">Flujos</a><a href="#demo" data-open="demo">Probá la demo</a><a href="#proceso">Cómo trabajamos</a><a href="#automatizaciones">Automatizaciones</a><a href="#calculadora" data-open="calc">Calculadora</a><a href="#faq">Preguntas frecuentes</a>
     <a href="#contacto" class="btn btn-white">Agendar diagnóstico sin cargo</a>
   </nav>
 </header>
@@ -728,54 +735,6 @@ body:has(dialog[open]){overflow:hidden}
     <div class="metric"><b class="grad">24/7</b><span>operación continua, también fines de semana y feriados</span></div>
     <div class="metric"><b class="grad" data-count="15" data-pre="&lt;" data-suf=" días">&lt;15 días</b><span>para tener tu primer flujo en producción</span></div>
   </div>
-    <div class="product rv">
-      <div class="window" role="img" aria-label="Vista de un flujo automático: una factura recibida por email es leída con IA, cargada en Tango, registrada en Google Sheets y notificada por WhatsApp.">
-        <div class="win-bar" aria-hidden="true">
-          <span class="win-dots"><i></i><i></i><i></i></span>
-          <span class="win-crumb"><span class="hide-sm" style="color:var(--text);font-weight:500">Automatika</span><svg class="i i-sm hide-sm"><use href="#chev"/></svg><span class="hide-sm">Flujos</span><svg class="i i-sm hide-sm"><use href="#chev"/></svg><b>Facturas de proveedores</b></span>
-          <span class="status">Activo</span>
-        </div>
-        <div class="win-body" aria-hidden="true">
-          <aside class="side">
-            <h5>Flujos</h5>
-            <a class="on"><svg class="i i-sm"><use href="#receipt"/></svg>Proveedores<span class="dot"></span></a>
-            <a><svg class="i i-sm"><use href="#coins"/></svg>Cobranzas<span class="dot"></span></a>
-            <a><svg class="i i-sm"><use href="#msg"/></svg>Leads WhatsApp<span class="dot"></span></a>
-            <a><svg class="i i-sm"><use href="#box"/></svg>Stock multicanal<span class="dot"></span></a>
-            <a><svg class="i i-sm"><use href="#chart"/></svg>Reporte 8:00 AM<span class="dot"></span></a>
-            <a><svg class="i i-sm"><use href="#userplus"/></svg>Onboarding<span class="dot off"></span></a>
-            <hr>
-            <h5>Hoy</h5>
-            <a><svg class="i i-sm"><use href="#bolt"/></svg>1.284 ejecuciones</a>
-            <a><svg class="i i-sm"><use href="#clock"/></svg>38 hs ahorradas</a>
-          </aside>
-          <div class="canvas" id="canvas">
-            <div class="canvas-inner" id="cinner">
-              <svg class="wires" viewBox="0 0 700 470">
-                <path class="wire" d="M214 108 C 236 108, 236 216, 258 216"/>
-                <path class="wire" d="M442 216 C 474 216, 468 108, 500 108"/>
-                <path class="wire" d="M442 216 C 474 216, 468 320, 500 320"/>
-                <path class="wire" d="M350 258 C 350 340, 280 396, 214 396"/>
-                <path class="wire-flow" d="M214 108 C 236 108, 236 216, 258 216"/>
-                <path class="wire-flow" style="animation-delay:.7s" d="M442 216 C 474 216, 468 108, 500 108"/>
-                <path class="wire-flow" style="animation-delay:1s" d="M442 216 C 474 216, 468 320, 500 320"/>
-                <path class="wire-flow" style="animation-delay:1.3s" d="M350 258 C 350 340, 280 396, 214 396"/>
-              </svg>
-              <div class="node" style="left:30px;top:66px"><div class="node-h"><span class="node-ic c-mail"><svg class="i"><use href="#mail"/></svg></span><div><b>Nueva factura</b><small>Gmail · adjunto PDF</small></div></div><div class="meta"><span>disparador</span><em>●</em></div></div>
-              <div class="node" style="left:258px;top:174px"><div class="node-h"><span class="node-ic c-ai"><svg class="i"><use href="#spark"/></svg></span><div><b>Extraer datos con IA</b><small>OCR · CUIT, ítems, IVA</small></div></div><div class="meta"><span>0,9 s</span><em>98,7%</em></div></div>
-              <div class="node" style="left:500px;top:66px"><div class="node-h"><span class="node-ic c-erp"><svg class="i"><use href="#db"/></svg></span><div><b>Cargar en Tango</b><small>Asiento + OC #4471</small></div></div><div class="meta"><span>1,4 s</span><em>OK</em></div></div>
-              <div class="node" style="left:500px;top:278px"><div class="node-h"><span class="node-ic c-wa"><svg class="i"><use href="#msg"/></svg></span><div><b>Avisar por WhatsApp</b><small>Administración</small></div></div><div class="meta"><span>0,6 s</span><em>Enviado</em></div></div>
-              <div class="node" style="left:30px;top:354px"><div class="node-h"><span class="node-ic c-sh"><svg class="i"><use href="#sheet"/></svg></span><div><b>Registrar en Sheets</b><small>Control de gastos</small></div></div><div class="meta"><span>0,4 s</span><em>OK</em></div></div>
-            </div>
-            <div class="toast"><svg class="i i-sm"><use href="#checkc"/></svg><span id="toastTxt">Factura A-0012 procesada en 4,2 s</span></div>
-          </div>
-          <div class="logp">
-            <h5>Ejecuciones recientes</h5>
-            <div id="runs"></div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -835,6 +794,63 @@ body:has(dialog[open]){overflow:hidden}
   </div>
 </section>
 </main>
+
+<dialog class="dlg dlg-xl" id="flujosDlg" aria-labelledby="flujosT">
+  <div class="dlg-in">
+    <button type="button" class="dlg-x" aria-label="Cerrar"><svg class="i"><use href="#close"/></svg></button>
+    <span class="label">Flujos</span>
+    <h3 class="dlg-t" id="flujosT">Así se ve un flujo <em>trabajando solo.</em></h3>
+    <p class="cp-d">Una factura llega por email, la IA la lee, se carga en Tango, se registra en la planilla y se avisa por WhatsApp. Sin que nadie toque nada.</p>
+    <div class="product in">
+      <div class="window" role="img" aria-label="Vista de un flujo automático: una factura recibida por email es leída con IA, cargada en Tango, registrada en Google Sheets y notificada por WhatsApp.">
+        <div class="win-bar" aria-hidden="true">
+          <span class="win-dots"><i></i><i></i><i></i></span>
+          <span class="win-crumb"><span class="hide-sm" style="color:var(--text);font-weight:500">Automatika</span><svg class="i i-sm hide-sm"><use href="#chev"/></svg><span class="hide-sm">Flujos</span><svg class="i i-sm hide-sm"><use href="#chev"/></svg><b>Facturas de proveedores</b></span>
+          <span class="status">Activo</span>
+        </div>
+        <div class="win-body" aria-hidden="true">
+          <aside class="side">
+            <h5>Flujos</h5>
+            <a class="on"><svg class="i i-sm"><use href="#receipt"/></svg>Proveedores<span class="dot"></span></a>
+            <a><svg class="i i-sm"><use href="#coins"/></svg>Cobranzas<span class="dot"></span></a>
+            <a><svg class="i i-sm"><use href="#msg"/></svg>Leads WhatsApp<span class="dot"></span></a>
+            <a><svg class="i i-sm"><use href="#box"/></svg>Stock multicanal<span class="dot"></span></a>
+            <a><svg class="i i-sm"><use href="#chart"/></svg>Reporte 8:00 AM<span class="dot"></span></a>
+            <a><svg class="i i-sm"><use href="#userplus"/></svg>Onboarding<span class="dot off"></span></a>
+            <hr>
+            <h5>Hoy</h5>
+            <a><svg class="i i-sm"><use href="#bolt"/></svg>1.284 ejecuciones</a>
+            <a><svg class="i i-sm"><use href="#clock"/></svg>38 hs ahorradas</a>
+          </aside>
+          <div class="canvas" id="canvas">
+            <div class="canvas-inner" id="cinner">
+              <svg class="wires" viewBox="0 0 700 470">
+                <path class="wire" d="M214 108 C 236 108, 236 216, 258 216"/>
+                <path class="wire" d="M442 216 C 474 216, 468 108, 500 108"/>
+                <path class="wire" d="M442 216 C 474 216, 468 320, 500 320"/>
+                <path class="wire" d="M350 258 C 350 340, 280 396, 214 396"/>
+                <path class="wire-flow" d="M214 108 C 236 108, 236 216, 258 216"/>
+                <path class="wire-flow" style="animation-delay:.7s" d="M442 216 C 474 216, 468 108, 500 108"/>
+                <path class="wire-flow" style="animation-delay:1s" d="M442 216 C 474 216, 468 320, 500 320"/>
+                <path class="wire-flow" style="animation-delay:1.3s" d="M350 258 C 350 340, 280 396, 214 396"/>
+              </svg>
+              <div class="node" style="left:30px;top:66px"><div class="node-h"><span class="node-ic c-mail"><svg class="i"><use href="#mail"/></svg></span><div><b>Nueva factura</b><small>Gmail · adjunto PDF</small></div></div><div class="meta"><span>disparador</span><em>●</em></div></div>
+              <div class="node" style="left:258px;top:174px"><div class="node-h"><span class="node-ic c-ai"><svg class="i"><use href="#spark"/></svg></span><div><b>Extraer datos con IA</b><small>OCR · CUIT, ítems, IVA</small></div></div><div class="meta"><span>0,9 s</span><em>98,7%</em></div></div>
+              <div class="node" style="left:500px;top:66px"><div class="node-h"><span class="node-ic c-erp"><svg class="i"><use href="#db"/></svg></span><div><b>Cargar en Tango</b><small>Asiento + OC #4471</small></div></div><div class="meta"><span>1,4 s</span><em>OK</em></div></div>
+              <div class="node" style="left:500px;top:278px"><div class="node-h"><span class="node-ic c-wa"><svg class="i"><use href="#msg"/></svg></span><div><b>Avisar por WhatsApp</b><small>Administración</small></div></div><div class="meta"><span>0,6 s</span><em>Enviado</em></div></div>
+              <div class="node" style="left:30px;top:354px"><div class="node-h"><span class="node-ic c-sh"><svg class="i"><use href="#sheet"/></svg></span><div><b>Registrar en Sheets</b><small>Control de gastos</small></div></div><div class="meta"><span>0,4 s</span><em>OK</em></div></div>
+            </div>
+            <div class="toast"><svg class="i i-sm"><use href="#checkc"/></svg><span id="toastTxt">Factura A-0012 procesada en 4,2 s</span></div>
+          </div>
+          <div class="logp">
+            <h5>Ejecuciones recientes</h5>
+            <div id="runs"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>
 
 <dialog class="dlg dlg-xl" id="demoDlg" aria-labelledby="demoT">
   <div class="dlg-in">
@@ -1234,6 +1250,8 @@ body:has(dialog[open]){overflow:hidden}
   grid.addEventListener('click', e => { const b = e.target.closest('.auto[data-k]'); if (b) abrirCaso(+b.dataset.k); });
 
   document.addEventListener('click', e => {
+    const abreFlujos = e.target.closest('[data-open="flujos"]');
+    if (abreFlujos) { e.preventDefault(); setM(false); $$('dialog[open]').forEach(d => d.close()); $('#flujosDlg').showModal(); return; }
     const abreDemo = e.target.closest('[data-open="demo"]');
     if (abreDemo) { e.preventDefault(); setM(false); $$('dialog[open]').forEach(d => d.close()); $('#demoDlg').showModal(); return; }
     const abre = e.target.closest('[data-open="calc"]');
@@ -1244,6 +1262,7 @@ body:has(dialog[open]){overflow:hidden}
     if (e.target.matches('dialog.dlg')) e.target.close();
   });
   if (location.hash === '#demo') $('#demoDlg').showModal();
+  if (location.hash === '#flujos') $('#flujosDlg').showModal();
 })();
 </script>
 </body>
