@@ -480,6 +480,83 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .rays,.wm::before{opacity:1}
   .wm-shine{display:none}
 }
+
+/* ---- Demo: lectura de facturas ---- */
+[hidden]{display:none!important}
+@keyframes spin{to{transform:rotate(360deg)}}
+.demo{display:grid;grid-template-columns:1fr 1.3fr}
+.demo-in{padding:28px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.drop{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;min-height:250px;padding:24px;border:1.5px dashed var(--line-3);border-radius:14px;background:rgba(255,255,255,.02);cursor:pointer;transition:border-color .2s,background-color .2s}
+.drop:hover,.drop.over,.drop:focus-visible{border-color:rgba(180,191,255,.75);background:rgba(139,156,255,.06)}
+.drop-ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:rgba(139,156,255,.12);color:var(--accent-2);border:1px solid rgba(139,156,255,.3);margin-bottom:6px}
+.drop b{font-weight:500;font-size:15px}
+.drop span{font-size:13px;color:var(--muted)}
+.demo-in > .btn{width:100%}
+.demo-prev{display:flex;align-items:center;gap:12px;padding:10px;border:1px solid var(--line-2);border-radius:12px;background:rgba(255,255,255,.02)}
+.demo-prev{flex-wrap:wrap}
+.demo-prev img{width:100%;height:340px;object-fit:contain;object-position:top;border-radius:8px;background:#fff;flex:none}
+@media (max-width:560px){.demo-prev img{height:260px}}
+.demo-prev div{flex:1;min-width:0}
+.demo-prev b{display:block;font-weight:500;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.demo-prev span{font-size:12px;color:var(--muted)}
+.demo-priv{display:flex;gap:8px;font-size:12.5px;color:var(--dim);align-items:flex-start;margin-top:auto}
+.demo-priv .i{margin-top:2px}
+.demo-out{padding:28px;display:flex;flex-direction:column;gap:18px;min-height:460px;min-width:0}
+.dsteps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.dsteps li{font-size:12px;line-height:1.35;color:var(--dim);display:flex;flex-direction:column;gap:8px;padding:10px;border-radius:10px;border:1px solid var(--line);transition:color .3s,border-color .3s,background-color .3s}
+.ds-ic{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line-3);display:grid;place-items:center}
+.dsteps li.act{color:var(--text);border-color:rgba(139,156,255,.45);background:rgba(139,156,255,.05)}
+.dsteps li.act .ds-ic{border-color:var(--accent-2);border-right-color:transparent;animation:spin .8s linear infinite}
+.dsteps li.ok{color:#C5C8CF}
+.dsteps li.ok .ds-ic{border-color:var(--green);background:var(--green)}
+.dsteps li.ok .ds-ic::after{content:"";width:8px;height:4px;border-left:2px solid #07080A;border-bottom:2px solid #07080A;transform:translateY(-1px) rotate(-45deg)}
+.dsteps li.err{color:var(--red);border-color:rgba(248,113,113,.4)}
+.dsteps li.err .ds-ic{border-color:var(--red)}
+.demo-empty{display:flex;flex-direction:column;gap:12px;flex:1}
+.sk{height:12px;border-radius:6px;background:rgba(255,255,255,.05)}
+.sk.h{height:22px;width:55%}.sk.w40{width:40%}.sk.w80{width:80%}
+.sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0}
+.sk-grid .sk{height:34px}
+.loading .sk{background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(180,191,255,.13),rgba(255,255,255,.04));background-size:200% 100%;animation:skel 1.2s linear infinite}
+@keyframes skel{from{background-position:200% 0}to{background-position:-200% 0}}
+.demo-empty p{margin-top:auto;text-align:center;font-size:13.5px;color:var(--dim)}
+.demo-res{display:flex;flex-direction:column;gap:16px;animation:fade .5s cubic-bezier(.2,.8,.2,1)}
+.r-top{display:flex;flex-wrap:wrap;gap:8px}
+.pill-ok,.pill-n{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12.5px}
+.pill-ok{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.3);color:#BBF7D0}
+.pill-n{border:1px solid var(--line-2);color:var(--muted)}
+.r-title{font-size:20px;letter-spacing:-.02em}
+.r-title span{font-family:var(--mono);font-size:14px;color:var(--muted);font-weight:400;margin-left:6px}
+.r-fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px 18px;margin:0}
+.r-fields dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.r-fields dd{margin:3px 0 0;font-size:14px;color:var(--text);overflow-wrap:anywhere}
+.mono{font-family:var(--mono);font-size:13px}
+.r-items{width:100%;border-collapse:collapse;font-size:13px}
+.r-items th{text-align:left;font-weight:400;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);padding:0 0 8px;border-bottom:1px solid var(--line)}
+.r-items td{padding:8px 0;border-bottom:1px solid var(--line);color:#C5C8CF;vertical-align:top}
+.r-items th:not(:first-child),.r-items td:not(:first-child){text-align:right;padding-left:12px;white-space:nowrap}
+.r-tot{display:flex;justify-content:flex-end;gap:28px;flex-wrap:wrap}
+.r-tot div{text-align:right}
+.r-tot span{display:block;font-size:12px;color:var(--muted)}
+.r-tot b{font-weight:500;font-size:15px;font-variant-numeric:tabular-nums}
+.r-tot .big b{font-size:24px;letter-spacing:-.02em;background:linear-gradient(180deg,#fff,#AAB5FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.r-qr{padding:14px 16px;border-radius:12px;border:1px solid var(--line-2);font-size:13.5px}
+.r-qr b{font-weight:500;display:block}
+.r-qr p{color:var(--muted);font-size:13px;margin-top:4px}
+.r-qr ul{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px 18px}
+.r-qr li{display:inline-flex;align-items:center;gap:6px;color:#C5C8CF}
+.r-qr li.y .i{color:var(--green)}.r-qr li.n .i{color:var(--red)}
+.r-qr.good{border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.05)}
+.r-qr.warn{border-color:rgba(251,191,36,.35);background:rgba(251,191,36,.05)}
+.r-obs{font-size:13px;color:var(--muted)}
+.r-act{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+.r-json{margin:0;max-height:280px;overflow:auto;padding:14px;border-radius:12px;background:#05060A;border:1px solid var(--line);font-family:var(--mono);font-size:12px;line-height:1.55;color:#C7CFFF}
+.r-err{display:flex;gap:12px;padding:16px;border-radius:12px;border:1px solid rgba(248,113,113,.35);background:rgba(248,113,113,.06)}
+.r-err .i{color:var(--red);margin-top:2px}
+.r-err b{font-weight:500}
+.r-err p{color:var(--muted);font-size:13.5px;margin-top:2px}
+@media (max-width:960px){.demo{grid-template-columns:1fr}.demo-in{border-right:0;border-bottom:1px solid var(--line)}.drop{min-height:190px}}
+@media (max-width:560px){.demo-in,.demo-out{padding:20px}.dsteps{grid-template-columns:1fr 1fr}.r-fields{grid-template-columns:1fr 1fr}.r-act .btn{width:100%}}
 </style>
 </head>
 <body>
@@ -527,6 +604,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
     <a href="#top" class="logo" aria-label="Automatika, inicio"><span class="logo-mark"><svg class="i"><use href="#logo"/></svg></span>Automatika</a>
     <nav class="nav" aria-label="Principal">
       <a href="#soluciones">Soluciones</a>
+      <a href="#demo">Demo</a>
       <a href="#casos">Casos de uso</a>
       <a href="#rubros">Rubros</a>
       <a href="#proceso">Proceso</a>
@@ -540,7 +618,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
     </div>
   </div>
   <nav class="mobile-nav" id="mnav" aria-label="Menú móvil">
-    <a href="#soluciones">Soluciones</a><a href="#casos">Casos de uso</a><a href="#rubros">Rubros</a><a href="#proceso">Proceso</a><a href="#ahorro">Calculadora</a><a href="#faq">Preguntas frecuentes</a>
+    <a href="#soluciones">Soluciones</a><a href="#demo">Probá la demo</a><a href="#casos">Casos de uso</a><a href="#rubros">Rubros</a><a href="#proceso">Proceso</a><a href="#ahorro">Calculadora</a><a href="#faq">Preguntas frecuentes</a>
     <a href="#contacto" class="btn btn-white">Agendar diagnóstico sin cargo</a>
   </nav>
 </header>
@@ -549,7 +627,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 <section class="hero" aria-labelledby="h1">
   <div class="hero-bg"><div class="rays" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="hero-spot"></div></div>
   <div class="container">
-    <a href="#ahorro" class="announce rv"><b>Nuevo</b> <span class="shim">Calculá cuánto ahorrás automatizando</span> <svg class="i i-sm"><use href="#chev"/></svg></a>
+    <a href="#demo" class="announce rv"><b>Nuevo</b> <span class="shim">Probá la IA con tu propia factura</span> <svg class="i i-sm"><use href="#chev"/></svg></a>
     <div class="wm" aria-hidden="true"><div class="wm-flare"></div><div class="wm-base" id="wmBase">Automatika</div><div class="wm-shine">Automatika</div></div>
     <h1 id="h1"><span class="sr-only">Automatika: </span>Tu empresa, funcionando en <em>piloto automático.</em></h1>
     <p class="sub rv d2">Reemplazamos las tareas administrativas repetitivas por flujos con IA que trabajan 24/7. Conectamos <strong>WhatsApp, planillas, cobros, CRM y tu ERP</strong> sin cambiar los sistemas que ya usás.</p>
@@ -702,6 +780,47 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   </div>
 </div>
 
+<section id="demo" aria-labelledby="demo-h">
+  <div class="container">
+    <div class="head">
+      <div class="rv"><span class="label">Demo en vivo</span><h2 class="h2 grad" id="demo-h">Probá la IA con <em>tu propia factura.</em></h2></div>
+      <p class="lede rv d1">Subí una factura en PDF o una foto y mirá cómo la leemos, la validamos con el QR de ARCA y la dejamos lista para cargar en tu sistema. En segundos.</p>
+    </div>
+    <div class="spot demo rv">
+      <div class="demo-in">
+        <label class="drop" id="drop" for="demoFile" tabindex="0">
+          <input type="file" id="demoFile" accept="application/pdf,image/jpeg,image/png,image/webp" class="sr-only" tabindex="-1">
+          <span class="drop-ic"><svg class="i"><use href="#file"/></svg></span>
+          <b>Arrastrá tu factura acá</b>
+          <span>o hacé clic para elegir un PDF o una foto (hasta 3 MB)</span>
+        </label>
+        <div class="demo-prev" id="demoPrev" hidden>
+          <img id="demoImg" alt="Vista previa del comprobante">
+          <div><b id="demoName"></b><span id="demoSize"></span></div>
+          <button type="button" id="demoReset" class="btn btn-ghost btn-sm">Probar otra</button>
+        </div>
+        <button class="btn btn-ghost" id="demoSample" type="button"><svg class="i i-sm"><use href="#spark"/></svg>Usar una factura de ejemplo</button>
+        <p class="demo-priv"><svg class="i i-sm"><use href="#lock"/></svg>No guardamos tus archivos: se procesan y se descartan. Si preferís, probá con la factura de ejemplo.</p>
+      </div>
+      <div class="demo-out" aria-live="polite">
+        <ol class="dsteps" id="dsteps">
+          <li><span class="ds-ic"></span>Leyendo el archivo</li>
+          <li><span class="ds-ic"></span>Extrayendo datos con IA</li>
+          <li><span class="ds-ic"></span>Validando con el QR de ARCA</li>
+          <li><span class="ds-ic"></span>Listo para cargar en tu ERP</li>
+        </ol>
+        <div class="demo-empty" id="demoEmpty">
+          <div class="sk h"></div><div class="sk w40"></div>
+          <div class="sk-grid"><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+          <div class="sk w80"></div><div class="sk"></div>
+          <p>Los datos de tu factura van a aparecer acá.</p>
+        </div>
+        <div class="demo-res" id="demoRes" hidden></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="casos" aria-labelledby="cases-h">
   <div class="container">
     <div class="head">
@@ -838,7 +957,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
     <div class="f-top">
       <div><a href="#top" class="logo"><span class="logo-mark"><svg class="i"><use href="#logo"/></svg></span>Automatika</a><p class="tag">Automatización inteligente de procesos para PyMEs y negocios.</p></div>
       <div class="f-cols">
-        <div><h4>Producto</h4><a href="#soluciones">Soluciones</a><a href="#casos">Casos de uso</a><a href="#rubros">Rubros</a></div>
+        <div><h4>Producto</h4><a href="#soluciones">Soluciones</a><a href="#demo">Demo</a><a href="#casos">Casos de uso</a><a href="#rubros">Rubros</a></div>
         <div><h4>Empresa</h4><a href="#proceso">Proceso</a><a href="#ahorro">Calculadora</a><a href="#faq">FAQ</a></div>
         <div><h4>Contacto</h4><a href="#contacto">Diagnóstico</a><a target="_blank" rel="noopener" href="https://wa.me/5491136826065">WhatsApp</a></div>
       </div>
@@ -974,6 +1093,172 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   const run = el => { const to = +el.dataset.count, pre = el.dataset.pre || '', suf = el.dataset.suf || ''; const t0 = performance.now(), dur = 1400;
     const f = now => { const k = Math.min(1, (now - t0) / dur), v = Math.round(to * (1 - Math.pow(1 - k, 3))); el.textContent = pre + v + suf; if (k < 1) requestAnimationFrame(f); }; requestAnimationFrame(f); };
   if (!reduce && 'IntersectionObserver' in window) { const co = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { run(e.target); co.unobserve(e.target); } }), {threshold:.6}); counters.forEach(c => co.observe(c)); }
+  // ---- Demo: lectura de facturas con IA ----
+  const D = { file: $('#demoFile'), drop: $('#drop'), sample: $('#demoSample'), prev: $('#demoPrev'), img: $('#demoImg'), name: $('#demoName'), size: $('#demoSize'), reset: $('#demoReset'), steps: $$('#dsteps li'), empty: $('#demoEmpty'), res: $('#demoRes') };
+  const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+  const JSQR = 'https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js';
+  const QRGEN = 'https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js';
+  const libs = {};
+  const loadLib = src => libs[src] ??= new Promise((ok, ko) => { const sc = document.createElement('script'); sc.src = src; sc.onload = ok; sc.onerror = () => ko(new Error('No se pudo cargar un componente. Revisá tu conexión.')); document.head.appendChild(sc); });
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  const esc = v => String(v ?? '').replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+  const dig = v => String(v ?? '').replace(/\D/g, '');
+  const money = n => n == null ? '—' : '$ ' + Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const fecha = v => /^\d{4}-\d{2}-\d{2}$/.test(v || '') ? v.split('-').reverse().join('/') : (v || '—');
+  const peso = n => n > 1048576 ? (n / 1048576).toFixed(1).replace('.', ',') + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB';
+  const toB64 = blob => new Promise(r => { const fr = new FileReader(); fr.onload = () => r(String(fr.result).split(',')[1]); fr.readAsDataURL(blob); });
+  const toBlob = (c, q) => new Promise(r => c.toBlob(r, 'image/jpeg', q));
+
+  const setStep = (n, st) => D.steps.forEach((li, i) => { li.classList.remove('act', 'err'); li.classList.toggle('ok', i < n || (i === n && st === 'ok')); if (i === n && st !== 'ok') li.classList.add(st); });
+  const clearSteps = () => D.steps.forEach(li => li.classList.remove('ok', 'act', 'err'));
+
+  async function leerQR(canvas) {
+    try {
+      await loadLib(JSQR);
+      const img = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
+      const q = window.jsQR(img.data, img.width, img.height, { inversionAttempts: 'attemptBoth' });
+      if (!q) return null;
+      const p = new URL(q.data).searchParams.get('p');
+      if (!p) return null;
+      let b = p.replace(/-/g, '+').replace(/_/g, '/');
+      while (b.length % 4) b += '=';
+      return JSON.parse(atob(b));
+    } catch { return null; }
+  }
+
+  async function desdeImagen(file) {
+    const bmp = await createImageBitmap(file);
+    const k = Math.min(1, 2000 / Math.max(bmp.width, bmp.height));
+    const c = document.createElement('canvas'); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+    const x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height); x.drawImage(bmp, 0, 0, c.width, c.height);
+    const blob = await toBlob(c, .9);
+    return { media_type: 'image/jpeg', data: await toB64(blob), canvas: c, preview: URL.createObjectURL(blob) };
+  }
+
+  async function desdePdf(file) {
+    await loadLib(PDFJS);
+    const pdfjs = window.pdfjsLib; pdfjs.GlobalWorkerOptions.workerSrc = PDFJS.replace('pdf.min.js', 'pdf.worker.min.js');
+    const pdf = await pdfjs.getDocument({ data: await file.arrayBuffer() }).promise;
+    const page = await pdf.getPage(1); const vp = page.getViewport({ scale: 2 });
+    const c = document.createElement('canvas'); c.width = vp.width; c.height = vp.height;
+    await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+    return { media_type: 'application/pdf', data: await toB64(file), canvas: c, preview: URL.createObjectURL(await toBlob(c, .85)) };
+  }
+
+  const MUESTRA = { es_factura: true, tipo_comprobante: 'Factura', letra: 'A', punto_venta: '00003', numero: '00001234', fecha_emision: '2026-10-14', emisor_razon_social: 'Insumos del Sur SRL', emisor_cuit: '30-71589634-2', emisor_condicion_iva: 'Responsable Inscripto', receptor_razon_social: 'Tu Empresa SA', receptor_cuit: '30-70000000-7', items: [{ descripcion: 'Resma papel A4 75 g', cantidad: 20, precio_unitario: 7450, subtotal: 149000 }, { descripcion: 'Tóner HP 85A compatible', cantidad: 4, precio_unitario: 18900, subtotal: 75600 }, { descripcion: 'Carpetas archivo oficio', cantidad: 50, precio_unitario: 1120, subtotal: 56000 }], neto_gravado: 280600, iva: 58926, otros_tributos: null, total: 339526, moneda: 'PES', cae: '76412345678901', vencimiento_cae: '2026-10-24', confianza: 'alta', observaciones: '' };
+
+  async function facturaEjemplo() {
+    await loadLib(QRGEN);
+    const W = 1000, H = 1414, c = document.createElement('canvas'); c.width = W; c.height = H;
+    const x = c.getContext('2d');
+    const T = (t, px, py, size = 16, weight = '400', align = 'left') => { x.font = `${weight} ${size}px Arial, Helvetica, sans-serif`; x.textAlign = align; x.fillText(t, px, py); };
+    const ar = n => n.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    x.fillStyle = '#fff'; x.fillRect(0, 0, W, H);
+    x.strokeStyle = '#222'; x.lineWidth = 2; x.fillStyle = '#111';
+    x.strokeRect(40, 40, 920, 250);
+    x.beginPath(); x.moveTo(500, 136); x.lineTo(500, 290); x.stroke();
+    x.fillStyle = '#fff'; x.fillRect(455, 40, 90, 96); x.fillStyle = '#111'; x.strokeRect(455, 40, 90, 96);
+    T('A', 500, 106, 64, '700', 'center'); T('COD. 01', 500, 128, 13, '700', 'center');
+    T('INSUMOS DEL SUR SRL', 60, 95, 27, '700');
+    T('Razón social: Insumos del Sur SRL', 60, 150); T('Domicilio: Av. Siempreviva 742 - CABA', 60, 180); T('Condición frente al IVA: Responsable Inscripto', 60, 210);
+    T('FACTURA', 572, 95, 30, '700');
+    T('Punto de venta: 00003   Comp. Nro: 00001234', 572, 140, 16, '700'); T('Fecha de emisión: 14/10/2026', 572, 170); T('CUIT: 30-71589634-2', 572, 200); T('Ingresos Brutos: 901-123456-7', 572, 230); T('Inicio de actividades: 01/03/2015', 572, 260);
+    x.strokeRect(40, 305, 920, 112);
+    T('CUIT: 30-70000000-7', 60, 340, 16, '700'); T('Apellido y nombre / Razón social: Tu Empresa SA', 360, 340);
+    T('Condición frente al IVA: Responsable Inscripto', 60, 372); T('Condición de venta: Cuenta corriente', 560, 372); T('Domicilio: Calle Falsa 123 - Córdoba', 60, 402);
+    x.strokeRect(40, 435, 920, 560); x.fillStyle = '#e9e9e9'; x.fillRect(41, 436, 918, 36); x.fillStyle = '#111';
+    T('Descripción', 60, 460, 15, '700'); T('Cant.', 600, 460, 15, '700', 'right'); T('P. unitario', 770, 460, 15, '700', 'right'); T('Subtotal', 940, 460, 15, '700', 'right');
+    MUESTRA.items.forEach((it, i) => { const y = 505 + i * 40; T(it.descripcion, 60, y); T(String(it.cantidad), 600, y, 16, '400', 'right'); T(ar(it.precio_unitario), 770, y, 16, '400', 'right'); T(ar(it.subtotal), 940, y, 16, '400', 'right'); });
+    x.strokeRect(560, 1010, 400, 130);
+    T('Importe neto gravado: $', 790, 1046, 16, '400', 'right'); T(ar(MUESTRA.neto_gravado), 940, 1046, 16, '700', 'right');
+    T('IVA 21%: $', 790, 1080, 16, '400', 'right'); T(ar(MUESTRA.iva), 940, 1080, 16, '700', 'right');
+    T('Importe total: $', 790, 1122, 20, '700', 'right'); T(ar(MUESTRA.total), 940, 1122, 20, '700', 'right');
+    const qrData = { ver: 1, fecha: '2026-10-14', cuit: 30715896342, ptoVta: 3, tipoCmp: 1, nroCmp: 1234, importe: 339526, moneda: 'PES', ctz: 1, tipoDocRec: 80, nroDocRec: 30700000007, tipoCodAut: 'E', codAut: 76412345678901 };
+    const q = window.qrcode(0, 'M'); q.addData('https://www.afip.gob.ar/fe/qr/?p=' + btoa(JSON.stringify(qrData))); q.make();
+    const n = q.getModuleCount(), cell = Math.floor(200 / (n + 4)), ox = 40 + 2 * cell, oy = 1165 + 2 * cell;
+    for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (q.isDark(r, k)) x.fillRect(ox + k * cell, oy + r * cell, cell, cell);
+    T('ARCA', 270, 1215, 30, '700'); T('Comprobante autorizado', 270, 1245);
+    T('CAE N°: 76412345678901', 960, 1215, 18, '700', 'right'); T('Fecha de vto. de CAE: 24/10/2026', 960, 1245, 16, '400', 'right');
+    x.save(); x.translate(W / 2, 760); x.rotate(-Math.PI / 7); x.fillStyle = 'rgba(200,30,30,.13)'; T('EJEMPLO · SIN VALIDEZ FISCAL', 0, 0, 56, '700', 'center'); x.restore();
+    return new File([await toBlob(c, .92)], 'factura-ejemplo.jpg', { type: 'image/jpeg' });
+  }
+
+  async function consultarIA(doc, esMuestra) {
+    if (/[?&]mock\b/.test(location.search)) { await wait(1800); return { datos: MUESTRA }; }
+    const r = await fetch('/api/leer-factura', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ media_type: doc.media_type, data: doc.data }) });
+    let j = {}; try { j = await r.json(); } catch {}
+    if (!r.ok) throw new Error(j.error || 'El servicio no respondió. Probá de nuevo en un momento.');
+    return j;
+  }
+
+  function mostrarError(msg) {
+    D.steps.forEach(li => { if (li.classList.contains('act')) { li.classList.remove('act'); li.classList.add('err'); } });
+    D.res.innerHTML = `<div class="r-err"><svg class="i"><use href="#xc"/></svg><div><b>No pudimos completar la lectura</b><p>${esc(msg)}</p></div></div>`;
+    D.empty.hidden = true; D.res.hidden = false;
+  }
+
+  function mostrar(d, qr, seg) {
+    if (!d.es_factura) return mostrarError('Esto no parece un comprobante fiscal. ' + (d.observaciones || 'Probá con otro archivo.'));
+    const checks = qr ? [
+      ['CUIT del emisor', dig(qr.cuit) === dig(d.emisor_cuit)],
+      ['Importe total', d.total != null && Math.abs(Number(qr.importe) - d.total) < 1],
+      ['CAE', dig(qr.codAut) === dig(d.cae)],
+    ] : null;
+    const okQR = checks && checks.every(ch => ch[1]);
+    const nro = [d.punto_venta, d.numero].filter(Boolean).join('-');
+    const campo = (k, v, cls = '') => `<div><dt>${k}</dt><dd class="${cls}">${esc(v) || '—'}</dd></div>`;
+    D.res.innerHTML = `
+      <div class="r-top"><span class="pill-ok"><svg class="i i-sm"><use href="#checkc"/></svg>Leída en ${seg.toFixed(1).replace('.', ',')} s</span><span class="pill-n">Confianza ${esc(d.confianza)}</span></div>
+      <h3 class="r-title">${esc(d.tipo_comprobante)} ${esc(d.letra)}<span>${esc(nro)}</span></h3>
+      <dl class="r-fields">${campo('Emisor', d.emisor_razon_social)}${campo('CUIT emisor', d.emisor_cuit, 'mono')}${campo('Fecha', fecha(d.fecha_emision))}${campo('Receptor', d.receptor_razon_social)}${campo('CAE', d.cae, 'mono')}${campo('Vto. CAE', fecha(d.vencimiento_cae))}</dl>
+      ${d.items.length ? `<table class="r-items"><thead><tr><th>Descripción</th><th>Cant.</th><th>Subtotal</th></tr></thead><tbody>${d.items.map(it => `<tr><td>${esc(it.descripcion)}</td><td>${it.cantidad ?? '—'}</td><td>${money(it.subtotal)}</td></tr>`).join('')}</tbody></table>` : ''}
+      <div class="r-tot"><div><span>Neto gravado</span><b>${money(d.neto_gravado)}</b></div><div><span>IVA</span><b>${money(d.iva)}</b></div><div class="big"><span>Total</span><b>${money(d.total)}</b></div></div>
+      <div class="r-qr ${checks ? (okQR ? 'good' : 'warn') : ''}">${checks
+        ? `<b>${okQR ? 'Validada contra el QR de ARCA' : 'Hay diferencias con el QR de ARCA'}</b><ul>${checks.map(([k, ok]) => `<li class="${ok ? 'y' : 'n'}"><svg class="i i-sm"><use href="#${ok ? 'checkc' : 'xc'}"/></svg>${k} ${ok ? 'coincide' : 'no coincide'}</li>`).join('')}</ul>`
+        : `<b>No encontramos un QR de ARCA legible</b><p>En fotos el QR a veces no se lee. En una implementación real también se puede constatar el comprobante directamente en ARCA.</p>`}</div>
+      ${d.observaciones ? `<p class="r-obs">${esc(d.observaciones)}</p>` : ''}
+      <div class="r-act"><button type="button" class="btn btn-ghost btn-sm" id="rJson" aria-expanded="false">Ver JSON para tu sistema</button><a href="#contacto" class="btn btn-white btn-sm" id="rCta">Quiero automatizar mis facturas <svg class="i i-sm arrow"><use href="#arrow"/></svg></a></div>
+      <pre class="r-json" id="rJsonPre" hidden>${esc(JSON.stringify(d, null, 2))}</pre>`;
+    D.empty.hidden = true; D.res.hidden = false;
+    $('#rJson').onclick = e => { const pre = $('#rJsonPre'); pre.hidden = !pre.hidden; e.currentTarget.setAttribute('aria-expanded', String(!pre.hidden)); e.currentTarget.textContent = pre.hidden ? 'Ver JSON para tu sistema' : 'Ocultar JSON'; };
+    $('#rCta').onclick = () => { const m = $('#f-msg'); if (!m.value) m.value = 'Probé la demo de lectura de facturas y me interesa automatizar la carga de comprobantes. '; };
+  }
+
+  let ocupado = false;
+  async function procesar(file, etiqueta) {
+    if (ocupado || !file) return;
+    clearSteps();
+    if (!/^(application\/pdf|image\/(jpeg|png|webp))$/.test(file.type)) return mostrarError('Formato no soportado. Subí un PDF, JPG, PNG o WEBP.');
+    if (file.size > 3 * 1048576) return mostrarError('El archivo supera los 3 MB. Probá con uno más liviano.');
+    ocupado = true; D.sample.disabled = true;
+    D.res.hidden = true; D.empty.hidden = false; D.empty.classList.add('loading');
+    D.name.textContent = etiqueta || file.name; D.size.textContent = peso(file.size); D.img.removeAttribute('src'); D.prev.hidden = false; D.drop.hidden = true;
+    const t0 = performance.now();
+    try {
+      setStep(0, 'act');
+      const doc = file.type === 'application/pdf' ? await desdePdf(file) : await desdeImagen(file);
+      D.img.src = doc.preview;
+      const qrPromesa = leerQR(doc.canvas);
+      setStep(1, 'act');
+      const resp = await consultarIA(doc);
+      setStep(2, 'act');
+      const qr = await qrPromesa; await wait(500);
+      setStep(3, 'act'); await wait(400); setStep(3, 'ok');
+      mostrar(resp.datos, qr, (performance.now() - t0) / 1000);
+    } catch (err) {
+      mostrarError(err.message || 'No pudimos procesar el archivo.');
+    } finally {
+      ocupado = false; D.sample.disabled = false; D.empty.classList.remove('loading');
+    }
+  }
+
+  D.file.addEventListener('change', () => procesar(D.file.files[0]));
+  D.drop.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); D.file.click(); } });
+  ['dragenter', 'dragover'].forEach(ev => D.drop.addEventListener(ev, e => { e.preventDefault(); D.drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(ev => D.drop.addEventListener(ev, e => { e.preventDefault(); D.drop.classList.remove('over'); }));
+  D.drop.addEventListener('drop', e => procesar(e.dataTransfer.files[0]));
+  D.sample.addEventListener('click', async () => { try { procesar(await facturaEjemplo(), 'Factura de ejemplo'); } catch (err) { mostrarError(err.message); } });
+  D.reset.addEventListener('click', () => { if (ocupado) return; D.prev.hidden = true; D.drop.hidden = false; D.file.value = ''; clearSteps(); D.res.hidden = true; D.empty.hidden = false; D.drop.focus(); });
 })();
 </script>
 </body>
