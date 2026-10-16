@@ -47,28 +47,61 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass-card {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(10, 15, 26, 0.95) 100%);
-            backdrop-filter: blur(12px);
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #070b14;
         }
+        /* Glassmorphism 2.0 con bisel de luz superior y efecto Spotlight */
+        .glass-card {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.78) 0%, rgba(7, 11, 20, 0.92) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        /* Efecto Spotlight que sigue el cursor sobre las tarjetas (estilo Linear / Vercel) */
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(
+                550px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+                rgba(34, 211, 238, 0.11),
+                transparent 40%
+            );
+            pointer-events: none;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+        .glass-card > * {
+            position: relative;
+            z-index: 2;
+        }
+        /* Grilla tecnológica con máscara de desvanecimiento radial */
         .bg-grid-tech {
             background-image: 
-                radial-gradient(circle at 50% 15%, rgba(37, 99, 235, 0.18) 0%, transparent 65%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 100% 100%, 32px 32px, 32px 32px;
+                radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.22) 0%, rgba(34, 211, 238, 0.06) 35%, transparent 70%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 100% 100%, 36px 36px, 36px 36px;
         }
         .card-interactive {
-            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
             will-change: transform;
         }
         @media (hover: hover) {
-            .card-interactive:hover {
-                transform: translateY(-3px);
-                border-color: rgba(34, 211, 238, 0.5);
-                box-shadow: 0 16px 30px -10px rgba(2, 132, 199, 0.25), 0 0 20px -5px rgba(34, 211, 238, 0.15);
+            .card-interactive:hover, .process-card:hover {
+                transform: translateY(-4px);
+                border-color: rgba(34, 211, 238, 0.45);
+                box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 20px 40px -15px rgba(2, 132, 199, 0.28), 0 0 25px -5px rgba(34, 211, 238, 0.15);
             }
+        }
+        /* Máscara de bordes difuminados para el Marquee (estilo Vercel) */
+        .marquee-mask {
+            mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
         }
         /* Scrollbar oculta para sliders táctiles */
         .no-scrollbar::-webkit-scrollbar {
@@ -87,10 +120,71 @@
             display: flex;
             flex-shrink: 0;
             width: max-content;
-            animation: marquee 25s linear infinite;
+            animation: marquee 28s linear infinite;
         }
         .marquee-group:hover .animate-marquee {
             animation-play-state: paused;
+        }
+        /* Animación de pulso de datos en tuberías (estilo n8n) */
+        @keyframes dataBeam {
+            0% { left: -25%; opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+        }
+        .animate-beam {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 35%;
+            background: linear-gradient(90deg, transparent, #22d3ee, #3b82f6, transparent);
+            animation: dataBeam 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        .animate-beam-delayed {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 35%;
+            background: linear-gradient(90deg, transparent, #34d399, #22d3ee, transparent);
+            animation: dataBeam 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.7s infinite;
+        }
+        .animate-beam-delayed-2 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 35%;
+            background: linear-gradient(90deg, transparent, #60a5fa, #34d399, transparent);
+            animation: dataBeam 2.2s cubic-bezier(0.4, 0, 0.2, 1) 1.4s infinite;
+        }
+        /* Efecto Shimmer en botones principales */
+        @keyframes shimmerSweep {
+            0% { transform: translateX(-150%) skewX(-20deg); }
+            50%, 100% { transform: translateX(250%) skewX(-20deg); }
+        }
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 45%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+            animation: shimmerSweep 4.5s ease-in-out infinite;
+            pointer-events: none;
+        }
+        /* Animación Scroll Reveal */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         /* Sliders táctiles amigables con el pulgar */
         input[type=range] {
@@ -103,22 +197,22 @@
             border-radius: 50%;
             background: #22d3ee;
             cursor: pointer;
-            box-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+            box-shadow: 0 0 12px rgba(34, 211, 238, 0.7);
+            transition: transform 0.15s ease;
         }
-        .filter-btn.active {
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+        .filter-btn.active, .flow-tab-btn.active {
             background-color: #2563eb;
             color: #ffffff;
             border-color: #60a5fa;
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 0 18px rgba(37, 99, 235, 0.45);
         }
         /* Rotación continua fluida del cubo */
         @keyframes spinCubeContinuous {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         .spin-cube-continuous {
             animation: spinCubeContinuous 9s linear infinite;
@@ -131,8 +225,11 @@
 </head>
 <body class="bg-darkbg text-gray-100 antialiased selection:bg-accent selection:text-white overflow-x-hidden">
 
+    <!-- Barra de Progreso de Lectura Superior -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-blue-500 via-cyan-400 to-emerald-400 z-[60] w-0 transition-all duration-75"></div>
+
     <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-darkbg/90 backdrop-blur-md border-b border-gray-800/70 transition-all">
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-darkbg/80 backdrop-blur-xl border-b border-white/[0.07] transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-4">
             <!-- Brand Logo Limpio y Equilibrado -->
             <a href="#" class="flex items-center space-x-2.5 sm:space-x-3 group cursor-pointer select-none shrink-0">
@@ -242,7 +339,7 @@
 
             <!-- Botones CTA Principales en Hero -->
             <div class="mt-7 sm:mt-9 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 max-w-2xl mx-auto px-4">
-                <a href="#contacto" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-600/25 hover:shadow-cyan-500/30 transition-all duration-300 border border-cyan-400/30 active:scale-95 shrink-0">
+                <a href="#contacto" class="btn-shimmer w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-600/25 hover:shadow-cyan-500/30 transition-all duration-300 border border-cyan-400/30 active:scale-95 shrink-0">
                     <i class="fa-solid fa-calendar-check text-cyan-200 text-xs sm:text-sm"></i>
                     <span class="tracking-wide">Solicitar Diagnóstico Sin Cargo</span>
                     <i class="fa-solid fa-arrow-right text-[11px] sm:text-xs text-cyan-200"></i>
@@ -272,15 +369,145 @@
                 </span>
             </div>
 
+            <!-- Simulador Interactivo de Flujos en Tiempo Real (Inspirado en Linear / Vercel / n8n) -->
+            <div class="mt-9 sm:mt-12 max-w-5xl mx-auto text-left">
+                <div class="glass-card rounded-2xl sm:rounded-3xl border border-white/10 shadow-[0_20px_70px_-15px_rgba(37,99,235,0.28)] overflow-hidden">
+                    <!-- Barra Superior Estilo Consola SaaS -->
+                    <div class="px-4 sm:px-6 py-3 bg-slate-950/90 border-b border-gray-800/80 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
+                                <span class="ml-2 text-[11px] font-mono text-gray-400 flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    <span>automatika-engine // flujo en vivo</span>
+                                </span>
+                            </div>
+                            <span class="sm:hidden text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-2 py-0.5 rounded border border-cyan-500/30">24/7 Activo</span>
+                        </div>
+
+                        <!-- Selector Interactivo de Escenario en Vivo -->
+                        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+                            <button type="button" data-flow="finanzas" class="flow-tab-btn active px-3 py-1 rounded-lg text-[11px] font-semibold border border-gray-800 bg-gray-900/80 text-gray-300 hover:text-white transition-all whitespace-nowrap cursor-pointer">
+                                <i class="fa-solid fa-file-invoice-dollar mr-1 text-[10px]"></i>Facturas & Bancos
+                            </button>
+                            <button type="button" data-flow="ventas" class="flow-tab-btn px-3 py-1 rounded-lg text-[11px] font-semibold border border-gray-800 bg-gray-900/80 text-gray-300 hover:text-white transition-all whitespace-nowrap cursor-pointer">
+                                <i class="fa-brands fa-whatsapp mr-1 text-[10px]"></i>Ventas & CRM
+                            </button>
+                            <button type="button" data-flow="stock" class="flow-tab-btn px-3 py-1 rounded-lg text-[11px] font-semibold border border-gray-800 bg-gray-900/80 text-gray-300 hover:text-white transition-all whitespace-nowrap cursor-pointer">
+                                <i class="fa-solid fa-boxes-stacked mr-1 text-[10px]"></i>Stock Multicanal
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Lienzo de Nodos Conectados con Pulsos Luminosos -->
+                    <div class="p-5 sm:p-7 bg-gradient-to-b from-slate-950/60 to-slate-900/80 relative">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-4 items-center relative">
+                            
+                            <!-- Nodo 1: Disparador -->
+                            <div id="sim-node-1" class="relative bg-slate-900/95 border border-gray-800 hover:border-cyan-500/50 rounded-xl p-3.5 transition-all shadow-inner">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-bold" id="node1-tag">01 · DISPARADOR</span>
+                                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                                </div>
+                                <div class="flex items-center space-x-2.5">
+                                    <div id="node1-icon" class="w-9 h-9 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+                                        <i class="fa-solid fa-envelope-open-text text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <div id="node1-title" class="text-xs sm:text-sm font-bold text-white leading-tight">Factura PDF Recibida</div>
+                                        <div id="node1-sub" class="text-[11px] text-gray-400 mt-0.5">Email / WhatsApp</div>
+                                    </div>
+                                </div>
+                                <!-- Tubería luminosa en Desktop -->
+                                <div class="hidden md:block absolute top-1/2 -right-4 w-4 h-[2px] bg-gray-800 overflow-hidden z-20">
+                                    <div class="animate-beam"></div>
+                                </div>
+                            </div>
+
+                            <!-- Nodo 2: Procesamiento IA -->
+                            <div id="sim-node-2" class="relative bg-slate-900/95 border border-gray-800 hover:border-cyan-500/50 rounded-xl p-3.5 transition-all shadow-inner">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-[10px] font-mono uppercase tracking-wider text-indigo-400 font-bold" id="node2-tag">02 · MOTOR IA</span>
+                                    <i class="fa-solid fa-microchip text-[10px] text-indigo-400"></i>
+                                </div>
+                                <div class="flex items-center space-x-2.5">
+                                    <div id="node2-icon" class="w-9 h-9 rounded-lg bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0">
+                                        <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <div id="node2-title" class="text-xs sm:text-sm font-bold text-white leading-tight">Lectura OCR Vision</div>
+                                        <div id="node2-sub" class="text-[11px] text-gray-400 mt-0.5">Extrae ítems, CUIT y total</div>
+                                    </div>
+                                </div>
+                                <!-- Tubería luminosa en Desktop -->
+                                <div class="hidden md:block absolute top-1/2 -right-4 w-4 h-[2px] bg-gray-800 overflow-hidden z-20">
+                                    <div class="animate-beam-delayed"></div>
+                                </div>
+                            </div>
+
+                            <!-- Nodo 3: Sistema Central -->
+                            <div id="sim-node-3" class="relative bg-slate-900/95 border border-gray-800 hover:border-cyan-500/50 rounded-xl p-3.5 transition-all shadow-inner">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-bold" id="node3-tag">03 · INTEGRACIÓN</span>
+                                    <i class="fa-solid fa-database text-[10px] text-sky-400"></i>
+                                </div>
+                                <div class="flex items-center space-x-2.5">
+                                    <div id="node3-icon" class="w-9 h-9 rounded-lg bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-sky-400 shrink-0">
+                                        <i class="fa-solid fa-building-columns text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <div id="node3-title" class="text-xs sm:text-sm font-bold text-white leading-tight">Cruce con ERP y Banco</div>
+                                        <div id="node3-sub" class="text-[11px] text-gray-400 mt-0.5">SAP / Tango / Planilla</div>
+                                    </div>
+                                </div>
+                                <!-- Tubería luminosa en Desktop -->
+                                <div class="hidden md:block absolute top-1/2 -right-4 w-4 h-[2px] bg-gray-800 overflow-hidden z-20">
+                                    <div class="animate-beam-delayed-2"></div>
+                                </div>
+                            </div>
+
+                            <!-- Nodo 4: Resultado -->
+                            <div id="sim-node-4" class="relative bg-emerald-950/30 border border-emerald-500/40 rounded-xl p-3.5 transition-all shadow-inner">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold" id="node4-tag">04 · COMPLETADO</span>
+                                    <span class="text-[10px] font-mono text-emerald-300 bg-emerald-950/80 px-1.5 py-0.2 rounded border border-emerald-500/30" id="node4-time">1.8s</span>
+                                </div>
+                                <div class="flex items-center space-x-2.5">
+                                    <div id="node4-icon" class="w-9 h-9 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0">
+                                        <i class="fa-solid fa-circle-check text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <div id="node4-title" class="text-xs sm:text-sm font-bold text-white leading-tight">Conciliado sin Errores</div>
+                                        <div id="node4-sub" class="text-[11px] text-emerald-300/90 mt-0.5">0 intervención humana</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Barra de Log en Tiempo Real (Estilo Terminal Vercel) -->
+                        <div class="mt-4 pt-3 border-t border-gray-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-mono">
+                            <div class="flex items-center space-x-2 text-gray-300 truncate">
+                                <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[10px]">LIVE</span>
+                                <span id="sim-log-text" class="truncate text-gray-300">✓ [OCR-IA] Comprobante #A-00482 leído e imputado en ERP automáticamente (ahorro: 14 min).</span>
+                            </div>
+                            <span class="text-gray-500 text-[10px] shrink-0">Ejecución continua 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Cinta de Integraciones (Marquee Infinito Ultra-Limpio en Móvil) -->
+    <!-- Cinta de Integraciones (Marquee Infinito con Bordes Difuminados) -->
     <div class="border-y border-gray-800/80 bg-slate-950/80 backdrop-blur-md py-4 sm:py-6 relative z-20 overflow-hidden marquee-group">
         <p class="text-center text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-3 sm:mb-4 px-4">
             Ecosistema que integramos de forma autónoma
         </p>
-        <div class="flex overflow-hidden select-none">
+        <div class="flex overflow-hidden select-none marquee-mask">
             <div class="animate-marquee flex items-center gap-3 sm:gap-5 text-xs sm:text-sm text-gray-300 font-semibold pr-3 sm:pr-5 shrink-0">
                 <div class="flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gray-900/90 border border-gray-800 shrink-0">
                     <i class="fa-brands fa-whatsapp text-emerald-400 text-sm sm:text-base"></i>
@@ -1503,7 +1730,7 @@
                             </div>
 
                             <!-- Botón de Envío -->
-                            <button id="submit-btn" type="submit" class="w-full relative group overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:from-blue-500 hover:via-indigo-500 hover:to-cyan-400 text-white font-bold py-3.5 px-4 transition-all duration-300 shadow-lg shadow-blue-600/25 hover:shadow-cyan-500/30 active:scale-[0.99] border border-cyan-400/30 flex items-center justify-center gap-2 sm:gap-2.5 text-xs sm:text-sm md:text-base cursor-pointer">
+                            <button id="submit-btn" type="submit" class="btn-shimmer w-full relative group overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:from-blue-500 hover:via-indigo-500 hover:to-cyan-400 text-white font-bold py-3.5 px-4 transition-all duration-300 shadow-lg shadow-blue-600/25 hover:shadow-cyan-500/30 active:scale-[0.99] border border-cyan-400/30 flex items-center justify-center gap-2 sm:gap-2.5 text-xs sm:text-sm md:text-base cursor-pointer">
                                 <i class="fa-solid fa-calendar-check text-cyan-200 text-xs sm:text-sm shrink-0"></i>
                                 <span class="whitespace-nowrap tracking-wide">Solicitar Diagnóstico Sin Cargo</span>
                                 <i class="fa-solid fa-arrow-right text-[11px] sm:text-xs text-cyan-200 transition-transform duration-300 group-hover:translate-x-1 shrink-0"></i>
@@ -1757,6 +1984,163 @@
                 }
             });
         });
+
+        // 7. Efecto Spotlight que sigue el cursor en las tarjetas .glass-card (estilo Linear / Raycast)
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // 8. Barra de progreso de lectura superior y sombra en Navbar
+        const scrollProgress = document.getElementById('scroll-progress');
+        const mainHeader = document.getElementById('main-header');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (scrollProgress && docHeight > 0) {
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                scrollProgress.style.width = `${scrollPercent}%`;
+            }
+            if (mainHeader) {
+                if (scrollTop > 20) {
+                    mainHeader.classList.add('shadow-2xl', 'shadow-black/50', 'border-cyan-500/20');
+                } else {
+                    mainHeader.classList.remove('shadow-2xl', 'shadow-black/50', 'border-cyan-500/20');
+                }
+            }
+        }, { passive: true });
+
+        // 9. Simulador de Flujo en Vivo en el Hero (3 escenarios interactivos + ticker de consola)
+        const flowScenarios = {
+            finanzas: {
+                node1: { icon: 'fa-solid fa-envelope-open-text', title: 'Email / WhatsApp', sub: 'Factura PDF recibida' },
+                node2: { icon: 'fa-solid fa-eye', title: 'Lectura OCR + IA', sub: 'Extrae ítems e importes' },
+                node3: { icon: 'fa-solid fa-code-branch', title: 'Reglas de Negocio', sub: 'Cruza con Orden de Compra' },
+                node4: { icon: 'fa-solid fa-check-double', title: 'ERP + Conciliación', sub: 'Asiento contable listo' },
+                logs: [
+                    'Factura #0004-8921 procesada • Importe validado • Asiento registrado en Tango Gestión sin intervención humana',
+                    'Comprobante proveedor "Distribuidora Sur" leído por OCR • 18 ítems conciliados en 1.8 segundos',
+                    'Extracto bancario Galicia cruzado con 42 cobranzas del día • 100% conciliado automáticamente'
+                ]
+            },
+            ventas: {
+                node1: { icon: 'fa-brands fa-whatsapp', title: 'WhatsApp / Web', sub: 'Consulta de cliente entrante' },
+                node2: { icon: 'fa-solid fa-brain', title: 'Agente IA Comercial', sub: 'Califica y cotiza al instante' },
+                node3: { icon: 'fa-solid fa-users-gear', title: 'Sincronización CRM', sub: 'Crea oportunidad y alerta' },
+                node4: { icon: 'fa-solid fa-bolt', title: 'Presupuesto Enviado', sub: 'Seguimiento automático' },
+                logs: [
+                    'Lead recibido por WhatsApp a las 22:14 hs • Presupuesto PDF generado y enviado en 4 segundos',
+                    'Oportunidad comercial sincronizada en HubSpot CRM • Recordatorio asignado al vendedor',
+                    'Cliente confirmó pedido • Link de cobro Mercado Pago generado y enviado automáticamente'
+                ]
+            },
+            stock: {
+                node1: { icon: 'fa-solid fa-cart-shopping', title: 'Mercado Libre / Tienda', sub: 'Nueva venta confirmada' },
+                node2: { icon: 'fa-solid fa-boxes-stacked', title: 'Descuento Multicanal', sub: 'Actualiza stock en 3 canales' },
+                node3: { icon: 'fa-solid fa-file-invoice', title: 'Facturación + Etiqueta', sub: 'Emite comprobante y envío' },
+                node4: { icon: 'fa-solid fa-truck-fast', title: 'Cliente Notificado', sub: 'Tracking enviado por WhatsApp' },
+                logs: [
+                    'Venta #ML-99412 detectada • Stock descontado en Tiendanube, Mercado Libre y depósito central',
+                    'Comprobante fiscal y etiqueta de despacho generados en 2.1s • Orden lista para empaque',
+                    'Código de seguimiento enviado por WhatsApp al comprador • 0 demoras operativas'
+                ]
+            }
+        };
+
+        let currentScenarioKey = 'finanzas';
+        let currentLogIndex = 0;
+        const flowTabBtns = document.querySelectorAll('.flow-tab-btn');
+        const simLogText = document.getElementById('sim-log-text');
+
+        function renderScenario(key) {
+            const data = flowScenarios[key];
+            if (!data) return;
+            currentScenarioKey = key;
+            currentLogIndex = 0;
+
+            const n1Icon = document.getElementById('node1-icon');
+            const n1Title = document.getElementById('node1-title');
+            const n1Sub = document.getElementById('node1-sub');
+            const n2Icon = document.getElementById('node2-icon');
+            const n2Title = document.getElementById('node2-title');
+            const n2Sub = document.getElementById('node2-sub');
+            const n3Icon = document.getElementById('node3-icon');
+            const n3Title = document.getElementById('node3-title');
+            const n3Sub = document.getElementById('node3-sub');
+            const n4Icon = document.getElementById('node4-icon');
+            const n4Title = document.getElementById('node4-title');
+            const n4Sub = document.getElementById('node4-sub');
+
+            if (n1Icon) n1Icon.innerHTML = `<i class="${data.node1.icon}"></i>`;
+            if (n1Title) n1Title.textContent = data.node1.title;
+            if (n1Sub) n1Sub.textContent = data.node1.sub;
+
+            if (n2Icon) n2Icon.innerHTML = `<i class="${data.node2.icon}"></i>`;
+            if (n2Title) n2Title.textContent = data.node2.title;
+            if (n2Sub) n2Sub.textContent = data.node2.sub;
+
+            if (n3Icon) n3Icon.innerHTML = `<i class="${data.node3.icon}"></i>`;
+            if (n3Title) n3Title.textContent = data.node3.title;
+            if (n3Sub) n3Sub.textContent = data.node3.sub;
+
+            if (n4Icon) n4Icon.innerHTML = `<i class="${data.node4.icon}"></i>`;
+            if (n4Title) n4Title.textContent = data.node4.title;
+            if (n4Sub) n4Sub.textContent = data.node4.sub;
+
+            if (simLogText) {
+                simLogText.style.opacity = '0';
+                setTimeout(() => {
+                    simLogText.textContent = data.logs[0];
+                    simLogText.style.opacity = '1';
+                }, 150);
+            }
+        }
+
+        flowTabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                flowTabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const flowKey = btn.getAttribute('data-flow');
+                renderScenario(flowKey);
+            });
+        });
+
+        // Rotación automática de logs en vivo cada 4.5 segundos
+        setInterval(() => {
+            const data = flowScenarios[currentScenarioKey];
+            if (!data || !simLogText) return;
+            currentLogIndex = (currentLogIndex + 1) % data.logs.length;
+            simLogText.style.opacity = '0';
+            setTimeout(() => {
+                simLogText.textContent = data.logs[currentLogIndex];
+                simLogText.style.opacity = '1';
+            }, 200);
+        }, 4500);
+
+        // 10. Animación suave de aparición al hacer scroll (IntersectionObserver)
+        const revealTargets = document.querySelectorAll('section > div > div.text-center, .glass-card');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+            revealTargets.forEach(el => {
+                el.classList.add('reveal-item');
+                observer.observe(el);
+            });
+        }
     </script>
 </body>
 </html>
