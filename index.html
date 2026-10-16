@@ -597,7 +597,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media (max-width:960px){.auto-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.auto-grid{grid-template-columns:1fr}.auto{min-height:0}.rubros{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -18px;padding:0 18px}.rubros::-webkit-scrollbar{display:none}.rchip{flex:none}}
 
-#proceso .product{margin:0 auto 64px;max-width:none}
+#proceso .product{margin:72px auto 0;max-width:none}
 .proc-steps{margin-bottom:56px}
 
 .ct-side{padding-top:6px}
@@ -669,8 +669,8 @@ body:has(dialog[open]){overflow:hidden}
     <a href="#top" class="logo" aria-label="Automatika, inicio"><span class="logo-mark"><svg class="i"><use href="#logo"/></svg></span>Automatika</a>
     <nav class="nav" aria-label="Principal">
       <a href="#demo">Demo</a>
-      <a href="#automatizaciones">Automatizaciones</a>
       <a href="#proceso">Cómo trabajamos</a>
+      <a href="#automatizaciones">Automatizaciones</a>
       <a href="#calculadora" data-open="calc">Calculadora</a>
       <a href="#faq">Preguntas</a>
     </nav>
@@ -681,7 +681,7 @@ body:has(dialog[open]){overflow:hidden}
     </div>
   </div>
   <nav class="mobile-nav" id="mnav" aria-label="Menú móvil">
-    <a href="#demo">Probá la demo</a><a href="#automatizaciones">Automatizaciones</a><a href="#proceso">Cómo trabajamos</a><a href="#calculadora" data-open="calc">Calculadora</a><a href="#faq">Preguntas frecuentes</a>
+    <a href="#demo">Probá la demo</a><a href="#proceso">Cómo trabajamos</a><a href="#automatizaciones">Automatizaciones</a><a href="#calculadora" data-open="calc">Calculadora</a><a href="#faq">Preguntas frecuentes</a>
     <a href="#contacto" class="btn btn-white">Agendar diagnóstico sin cargo</a>
   </nav>
 </header>
@@ -749,24 +749,26 @@ body:has(dialog[open]){overflow:hidden}
   </div>
 </section>
 
-<section id="automatizaciones" aria-labelledby="auto-h">
-  <div class="container">
-    <div class="head">
-      <div class="rv"><span class="label">Automatizaciones</span><h2 class="h2 grad" id="auto-h">Lo que tu equipo deja de <em>hacer a mano.</em></h2></div>
-      <p class="lede rv d1">Elegí tu rubro y mirá qué procesos automatizamos. Tocá cualquiera para ver el antes y el después.</p>
-    </div>
-    <div class="rubros rv" role="group" aria-label="Filtrar por rubro"><button type="button" class="rchip" data-r="todos" aria-pressed="true">Todos</button><button type="button" class="rchip" data-r="comercio" aria-pressed="false">Comercio y e-commerce</button><button type="button" class="rchip" data-r="estudios" aria-pressed="false">Estudios profesionales</button><button type="button" class="rchip" data-r="distribuidoras" aria-pressed="false">Distribuidoras</button><button type="button" class="rchip" data-r="salud" aria-pressed="false">Salud y estética</button><button type="button" class="rchip" data-r="servicios" aria-pressed="false">Servicios</button><button type="button" class="rchip" data-r="industria" aria-pressed="false">Fábricas y talleres</button></div>
-    <p class="rubro-desc" id="rubroDesc" aria-live="polite"></p>
-    <div class="auto-grid" id="autoGrid"></div>
-  </div>
-</section>
-
 <section id="proceso" aria-labelledby="proc-h">
   <div class="container">
     <div class="head">
-      <div class="rv"><span class="label">Cómo trabajamos</span><h2 class="h2 grad" id="proc-h">Así funciona <em>una automatización.</em></h2></div>
-      <p class="lede rv d1">Un método claro y sin riesgos: en menos de 15 días tu primer flujo está trabajando solo, sin cambiar tus sistemas.</p>
+      <div class="rv"><span class="label">Cómo trabajamos</span><h2 class="h2 grad" id="proc-h">De la idea a producción <em>en 15 días.</em></h2></div>
+      <p class="lede rv d1">Un método claro y sin riesgos, en 4 pasos. Sin cambiar tus sistemas y con resultados medibles desde el primer mes.</p>
     </div>
+    <div class="proc-steps">
+    <ol class="steps">
+      <li class="step rv"><span class="step-n">01</span><h3>Diagnóstico y mapeo</h3><p>Revisamos qué herramientas usás y detectamos las tareas que consumen más tiempo o generan errores.</p><span class="when">Semana 1</span></li>
+      <li class="step rv d1"><span class="step-n">02</span><h3>Diseño de arquitectura</h3><p>Definimos el camino de los datos (APIs, webhooks, credenciales cifradas) cuidando tu privacidad.</p><span class="when">Semana 1</span></li>
+      <li class="step rv d2"><span class="step-n">03</span><h3>Desarrollo y pruebas</h3><p>Construimos el flujo en un entorno seguro y probamos casos extremos antes de salir a producción.</p><span class="when">Semana 2</span></li>
+      <li class="step rv d3"><span class="step-n">04</span><h3>Puesta en marcha</h3><p>Desplegamos, capacitamos brevemente a tu equipo y monitoreamos el funcionamiento 24/7.</p><span class="when">Día 15</span></li>
+    </ol>
+    </div>
+  <div class="metrics rv">
+    <div class="metric"><b class="grad" data-count="40" data-pre="+" data-suf=" hs">+40 hs</b><span>ahorradas al mes por persona en gestión manual</span></div>
+    <div class="metric"><b class="grad">0%</b><span>margen de error en transcripción de datos</span></div>
+    <div class="metric"><b class="grad">24/7</b><span>operación continua, también fines de semana y feriados</span></div>
+    <div class="metric"><b class="grad" data-count="15" data-pre="&lt;" data-suf=" días">&lt;15 días</b><span>para tener tu primer flujo en producción</span></div>
+  </div>
     <div class="product rv">
       <div class="window" role="img" aria-label="Vista de un flujo automático: una factura recibida por email es leída con IA, cargada en Tango, registrada en Google Sheets y notificada por WhatsApp.">
         <div class="win-bar" aria-hidden="true">
@@ -815,20 +817,18 @@ body:has(dialog[open]){overflow:hidden}
         </div>
       </div>
     </div>
-    <div class="proc-steps">
-    <ol class="steps">
-      <li class="step rv"><span class="step-n">01</span><h3>Diagnóstico y mapeo</h3><p>Revisamos qué herramientas usás y detectamos las tareas que consumen más tiempo o generan errores.</p><span class="when">Semana 1</span></li>
-      <li class="step rv d1"><span class="step-n">02</span><h3>Diseño de arquitectura</h3><p>Definimos el camino de los datos (APIs, webhooks, credenciales cifradas) cuidando tu privacidad.</p><span class="when">Semana 1</span></li>
-      <li class="step rv d2"><span class="step-n">03</span><h3>Desarrollo y pruebas</h3><p>Construimos el flujo en un entorno seguro y probamos casos extremos antes de salir a producción.</p><span class="when">Semana 2</span></li>
-      <li class="step rv d3"><span class="step-n">04</span><h3>Puesta en marcha</h3><p>Desplegamos, capacitamos brevemente a tu equipo y monitoreamos el funcionamiento 24/7.</p><span class="when">Día 15</span></li>
-    </ol>
-    </div>
-  <div class="metrics rv">
-    <div class="metric"><b class="grad" data-count="40" data-pre="+" data-suf=" hs">+40 hs</b><span>ahorradas al mes por persona en gestión manual</span></div>
-    <div class="metric"><b class="grad">0%</b><span>margen de error en transcripción de datos</span></div>
-    <div class="metric"><b class="grad">24/7</b><span>operación continua, también fines de semana y feriados</span></div>
-    <div class="metric"><b class="grad" data-count="15" data-pre="&lt;" data-suf=" días">&lt;15 días</b><span>para tener tu primer flujo en producción</span></div>
   </div>
+</section>
+
+<section id="automatizaciones" aria-labelledby="auto-h">
+  <div class="container">
+    <div class="head">
+      <div class="rv"><span class="label">Automatizaciones</span><h2 class="h2 grad" id="auto-h">Lo que tu equipo deja de <em>hacer a mano.</em></h2></div>
+      <p class="lede rv d1">Elegí tu rubro y mirá qué procesos automatizamos. Tocá cualquiera para ver el antes y el después.</p>
+    </div>
+    <div class="rubros rv" role="group" aria-label="Filtrar por rubro"><button type="button" class="rchip" data-r="todos" aria-pressed="true">Todos</button><button type="button" class="rchip" data-r="comercio" aria-pressed="false">Comercio y e-commerce</button><button type="button" class="rchip" data-r="estudios" aria-pressed="false">Estudios profesionales</button><button type="button" class="rchip" data-r="distribuidoras" aria-pressed="false">Distribuidoras</button><button type="button" class="rchip" data-r="salud" aria-pressed="false">Salud y estética</button><button type="button" class="rchip" data-r="servicios" aria-pressed="false">Servicios</button><button type="button" class="rchip" data-r="industria" aria-pressed="false">Fábricas y talleres</button></div>
+    <p class="rubro-desc" id="rubroDesc" aria-live="polite"></p>
+    <div class="auto-grid" id="autoGrid"></div>
   </div>
 </section>
 
