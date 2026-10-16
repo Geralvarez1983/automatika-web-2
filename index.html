@@ -557,6 +557,71 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .r-err p{color:var(--muted);font-size:13.5px;margin-top:2px}
 @media (max-width:960px){.demo{grid-template-columns:1fr}.demo-in{border-right:0;border-bottom:1px solid var(--line)}.drop{min-height:190px}}
 @media (max-width:560px){.demo-in,.demo-out{padding:20px}.dsteps{grid-template-columns:1fr 1fr}.r-fields{grid-template-columns:1fr 1fr}.r-act .btn{width:100%}}
+
+/* ---- Diseño limpio: accesos, automatizaciones, ventanas ---- */
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:56px auto 0;max-width:1100px;text-align:left}
+.qa{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;border:1px solid var(--line-2);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));backdrop-filter:blur(8px);color:var(--text);transition:border-color .25s,transform .25s,background-color .25s}
+.qa:hover{border-color:var(--line-3);transform:translateY(-2px)}
+.qi{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;flex:none;background:rgba(139,156,255,.1);border:1px solid rgba(139,156,255,.28);color:var(--accent-2)}
+.qi svg{width:19px;height:19px}
+.qa.wa .qi{background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.3);color:#6EE7A0}
+.qa.wa .qi svg{fill:currentColor}
+.qa b{display:block;font-weight:500;font-size:14.5px;line-height:1.3}
+.qa small{display:block;color:var(--muted);font-size:12.5px;line-height:1.35;margin-top:2px}
+.qa .go{margin-left:auto;color:var(--dim);transition:transform .2s,color .2s}
+.qa:hover .go{transform:translateX(3px);color:var(--text)}
+@media (max-width:980px){.quick{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.quick{margin-top:40px;gap:10px}.qa{flex-direction:column;align-items:flex-start;gap:10px;padding:14px}.qa .go{display:none}}
+
+.rubros{display:flex;flex-wrap:wrap;gap:8px}
+.rchip{height:36px;padding:0 15px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.02);color:var(--muted);font-size:13.5px;cursor:pointer;transition:color .2s,border-color .2s,background-color .2s}
+.rchip:hover{color:var(--text);border-color:var(--line-3)}
+.rchip[aria-pressed="true"]{background:#fff;border-color:#fff;color:#08090A}
+.rubro-desc{min-height:24px;margin:14px 0 22px;color:var(--muted);font-size:14px;max-width:760px}
+.auto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.auto{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:22px;min-height:260px;cursor:pointer;color:var(--text);font:inherit;width:100%}
+.auto:hover{transform:translateY(-3px);border-color:var(--line-2)}
+.a-top{display:flex;align-items:center;justify-content:space-between;width:100%;gap:10px}
+.a-ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;flex:none;background:rgba(139,156,255,.1);border:1px solid rgba(139,156,255,.28);color:var(--accent-2)}
+.a-cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);text-align:right}
+.auto b{font-weight:500;font-size:16.5px;letter-spacing:-.015em;line-height:1.3;margin-top:18px}
+.auto p{color:var(--muted);font-size:13.5px;margin-top:6px}
+.a-kpi{margin-top:auto;padding-top:18px}
+.a-kpi em{font-style:normal;display:block;font-size:22px;font-weight:500;letter-spacing:-.03em;line-height:1.1;background:linear-gradient(180deg,#fff,#AAB5FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.a-kpi small{display:block;font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:2px}
+.a-more{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;color:var(--accent-2)}
+.a-more .i{transition:transform .2s}
+.auto:hover .a-more .i{transform:translateX(3px)}
+.auto.custom{border-style:dashed;background:transparent}
+.auto.custom .a-more{margin-top:auto;padding-top:18px}
+@media (max-width:960px){.auto-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.auto-grid{grid-template-columns:1fr}.auto{min-height:0}.rubros{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -18px;padding:0 18px}.rubros::-webkit-scrollbar{display:none}.rchip{flex:none}}
+
+#proceso .product{margin:0 auto 64px;max-width:none}
+.proc-steps{margin-bottom:56px}
+
+.ct-side{padding-top:6px}
+.side-h{font-size:20px;letter-spacing:-.02em;margin-bottom:10px;scroll-margin-top:90px}
+.ct-side .faq-q summary{font-size:15px;padding:18px 0}
+.ct-side .faq-q details p{padding-right:0;font-size:14px}
+.contact .form{margin-top:28px}
+
+body:has(dialog[open]){overflow:hidden}
+.dlg{border:0;padding:0;background:transparent;color:var(--text);width:min(720px,calc(100vw - 24px));max-width:none;max-height:calc(100dvh - 32px);overflow:visible}
+.dlg-wide{width:min(1000px,calc(100vw - 24px))}
+.dlg::backdrop{background:rgba(3,4,8,.74);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.dlg[open]{animation:dlgIn .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes dlgIn{from{opacity:0;transform:translateY(14px) scale(.98)}}
+.dlg-in{position:relative;max-height:calc(100dvh - 32px);overflow:auto;padding:32px;border-radius:20px;border:1px solid var(--line-2);background:linear-gradient(180deg,#121319,#0B0C10);box-shadow:0 40px 120px -20px rgba(0,0,0,.9),0 0 0 1px rgba(0,0,0,.5)}
+.dlg-x{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:10px;border:1px solid var(--line-2);background:rgba(255,255,255,.04);color:var(--muted);display:grid;place-items:center;cursor:pointer;transition:color .2s,border-color .2s}
+.dlg-x:hover{color:var(--text);border-color:var(--line-3)}
+.dlg-t{font-size:clamp(22px,2.4vw,28px);letter-spacing:-.03em;margin-top:12px;padding-right:44px}
+.dlg-kpi{display:flex;align-items:baseline;gap:10px;margin-top:18px}
+.dlg-kpi b{font-size:30px;font-weight:500;letter-spacing:-.04em;background:linear-gradient(180deg,#fff,#AAB5FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dlg-kpi span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.dlg-act{display:flex;gap:10px;flex-wrap:wrap}
+.dlg .calc{margin-top:22px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media (max-width:560px){.dlg-in{padding:22px}.dlg-act{width:100%}.dlg-act .btn{flex:1}}
 </style>
 </head>
 <body>
@@ -603,13 +668,11 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   <div class="container header-inner">
     <a href="#top" class="logo" aria-label="Automatika, inicio"><span class="logo-mark"><svg class="i"><use href="#logo"/></svg></span>Automatika</a>
     <nav class="nav" aria-label="Principal">
-      <a href="#soluciones">Soluciones</a>
       <a href="#demo">Demo</a>
-      <a href="#casos">Casos de uso</a>
-      <a href="#rubros">Rubros</a>
-      <a href="#proceso">Proceso</a>
-      <a href="#ahorro">Calculadora</a>
-      <a href="#faq">FAQ</a>
+      <a href="#automatizaciones">Automatizaciones</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#calculadora" data-open="calc">Calculadora</a>
+      <a href="#faq">Preguntas</a>
     </nav>
     <div class="header-right">
       <a class="btn btn-ghost btn-sm" target="_blank" rel="noopener" href="https://wa.me/5491136826065?text=Hola%20Automatika%2C%20quiero%20consultar%20por%20una%20soluci%C3%B3n%20de%20automatizaci%C3%B3n%20para%20mi%20empresa.">WhatsApp</a>
@@ -618,7 +681,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
     </div>
   </div>
   <nav class="mobile-nav" id="mnav" aria-label="Menú móvil">
-    <a href="#soluciones">Soluciones</a><a href="#demo">Probá la demo</a><a href="#casos">Casos de uso</a><a href="#rubros">Rubros</a><a href="#proceso">Proceso</a><a href="#ahorro">Calculadora</a><a href="#faq">Preguntas frecuentes</a>
+    <a href="#demo">Probá la demo</a><a href="#automatizaciones">Automatizaciones</a><a href="#proceso">Cómo trabajamos</a><a href="#calculadora" data-open="calc">Calculadora</a><a href="#faq">Preguntas frecuentes</a>
     <a href="#contacto" class="btn btn-white">Agendar diagnóstico sin cargo</a>
   </nav>
 </header>
@@ -630,18 +693,81 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
     <a href="#demo" class="announce rv"><b>Nuevo</b> <span class="shim">Probá la IA con tu propia factura</span> <svg class="i i-sm"><use href="#chev"/></svg></a>
     <div class="wm" aria-hidden="true"><div class="wm-flare"></div><div class="wm-base" id="wmBase">Automatika</div><div class="wm-shine">Automatika</div></div>
     <h1 id="h1"><span class="sr-only">Automatika: </span>Tu empresa, funcionando en <em>piloto automático.</em></h1>
-    <p class="sub rv d2">Reemplazamos las tareas administrativas repetitivas por flujos con IA que trabajan 24/7. Conectamos <strong>WhatsApp, planillas, cobros, CRM y tu ERP</strong> sin cambiar los sistemas que ya usás.</p>
+    <p class="sub rv d2">Automatizamos las tareas repetitivas de tu empresa con IA. Conectamos <strong>WhatsApp, planillas, cobros y tu ERP</strong> sin cambiar los sistemas que ya usás.</p>
     <div class="hero-ctas rv d3">
-      <a href="#contacto" class="btn btn-white">Agendar diagnóstico sin cargo <svg class="i i-sm arrow"><use href="#arrow"/></svg></a>
-      <a href="#casos" class="btn btn-ghost">Ver casos de uso</a>
+      <a href="#demo" class="btn btn-white">Probar la demo <svg class="i i-sm arrow"><use href="#arrow"/></svg></a>
+      <a href="#contacto" class="btn btn-ghost">Agendar diagnóstico</a>
     </div>
-    <div class="hero-note rv d4">
-      <span><svg class="i"><use href="#check"/></svg>Primer flujo en &lt; 15 días</span>
-      <span><svg class="i"><use href="#check"/></svg>Sin reemplazar tu software</span>
-      <span><svg class="i"><use href="#check"/></svg>100% confidencial</span>
+    <div class="quick rv d4">
+      <a href="#demo" class="qa"><span class="qi"><svg class="i"><use href="#file"/></svg></span><span><b>Probá la demo</b><small>Mirá una factura leerse sola</small></span><svg class="i i-sm go"><use href="#arrow"/></svg></a>
+      <a href="#automatizaciones" class="qa"><span class="qi"><svg class="i"><use href="#bolt"/></svg></span><span><b>Automatizaciones</b><small>8 procesos según tu rubro</small></span><svg class="i i-sm go"><use href="#arrow"/></svg></a>
+      <a href="#calculadora" class="qa" data-open="calc"><span class="qi"><svg class="i"><use href="#chart"/></svg></span><span><b>Calculá tu ahorro</b><small>Horas y dinero que recuperás</small></span><svg class="i i-sm go"><use href="#arrow"/></svg></a>
+      <a href="https://wa.me/5491136826065?text=Hola%20Automatika%2C%20quiero%20consultar%20por%20una%20soluci%C3%B3n%20de%20automatizaci%C3%B3n%20para%20mi%20empresa." target="_blank" rel="noopener" class="qa wa"><span class="qi"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg></span><span><b>Hablá por WhatsApp</b><small>Te responde un ingeniero</small></span><svg class="i i-sm go"><use href="#arrow"/></svg></a>
     </div>
 
-    <div class="product rv d4">
+  </div>
+</section>
+
+<section id="demo" aria-labelledby="demo-h">
+  <div class="container">
+    <div class="head">
+      <div class="rv"><span class="label">Demo en vivo</span><h2 class="h2 grad" id="demo-h">Probá la IA con <em>tu propia factura.</em></h2></div>
+      <p class="lede rv d1">Subí una factura en PDF o una foto y mirá cómo la leemos, la validamos con el QR de ARCA y la dejamos lista para cargar en tu sistema. En segundos.</p>
+    </div>
+    <div class="spot demo rv">
+      <div class="demo-in">
+        <label class="drop" id="drop" for="demoFile" tabindex="0">
+          <input type="file" id="demoFile" accept="application/pdf,image/jpeg,image/png,image/webp" class="sr-only" tabindex="-1">
+          <span class="drop-ic"><svg class="i"><use href="#file"/></svg></span>
+          <b>Arrastrá tu factura acá</b>
+          <span>o hacé clic para elegir un PDF o una foto (hasta 3 MB)</span>
+        </label>
+        <div class="demo-prev" id="demoPrev" hidden>
+          <img id="demoImg" alt="Vista previa del comprobante">
+          <div><b id="demoName"></b><span id="demoSize"></span></div>
+          <button type="button" id="demoReset" class="btn btn-ghost btn-sm">Probar otra</button>
+        </div>
+        <button class="btn btn-ghost" id="demoSample" type="button"><svg class="i i-sm"><use href="#spark"/></svg>Usar una factura de ejemplo</button>
+        <p class="demo-priv"><svg class="i i-sm"><use href="#lock"/></svg>No guardamos tus archivos: se procesan y se descartan. Si preferís, probá con la factura de ejemplo.</p>
+      </div>
+      <div class="demo-out" aria-live="polite">
+        <ol class="dsteps" id="dsteps">
+          <li><span class="ds-ic"></span>Leyendo el archivo</li>
+          <li><span class="ds-ic"></span>Extrayendo datos con IA</li>
+          <li><span class="ds-ic"></span>Validando con el QR de ARCA</li>
+          <li><span class="ds-ic"></span>Listo para cargar en tu ERP</li>
+        </ol>
+        <div class="demo-empty" id="demoEmpty">
+          <div class="sk h"></div><div class="sk w40"></div>
+          <div class="sk-grid"><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+          <div class="sk w80"></div><div class="sk"></div>
+          <p>Los datos de tu factura van a aparecer acá.</p>
+        </div>
+        <div class="demo-res" id="demoRes" hidden></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="automatizaciones" aria-labelledby="auto-h">
+  <div class="container">
+    <div class="head">
+      <div class="rv"><span class="label">Automatizaciones</span><h2 class="h2 grad" id="auto-h">Lo que tu equipo deja de <em>hacer a mano.</em></h2></div>
+      <p class="lede rv d1">Elegí tu rubro y mirá qué procesos automatizamos. Tocá cualquiera para ver el antes y el después.</p>
+    </div>
+    <div class="rubros rv" role="group" aria-label="Filtrar por rubro"><button type="button" class="rchip" data-r="todos" aria-pressed="true">Todos</button><button type="button" class="rchip" data-r="comercio" aria-pressed="false">Comercio y e-commerce</button><button type="button" class="rchip" data-r="estudios" aria-pressed="false">Estudios profesionales</button><button type="button" class="rchip" data-r="distribuidoras" aria-pressed="false">Distribuidoras</button><button type="button" class="rchip" data-r="salud" aria-pressed="false">Salud y estética</button><button type="button" class="rchip" data-r="servicios" aria-pressed="false">Servicios</button><button type="button" class="rchip" data-r="industria" aria-pressed="false">Fábricas y talleres</button></div>
+    <p class="rubro-desc" id="rubroDesc" aria-live="polite"></p>
+    <div class="auto-grid" id="autoGrid"></div>
+  </div>
+</section>
+
+<section id="proceso" aria-labelledby="proc-h">
+  <div class="container">
+    <div class="head">
+      <div class="rv"><span class="label">Cómo trabajamos</span><h2 class="h2 grad" id="proc-h">Así funciona <em>una automatización.</em></h2></div>
+      <p class="lede rv d1">Un método claro y sin riesgos: en menos de 15 días tu primer flujo está trabajando solo, sin cambiar tus sistemas.</p>
+    </div>
+    <div class="product rv">
       <div class="window" role="img" aria-label="Vista de un flujo automático: una factura recibida por email es leída con IA, cargada en Tango, registrada en Google Sheets y notificada por WhatsApp.">
         <div class="win-bar" aria-hidden="true">
           <span class="win-dots"><i></i><i></i><i></i></span>
@@ -689,225 +815,20 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<div class="logos">
-  <div class="container">
-    <p>Se integra con las herramientas que tu empresa ya usa</p>
-    <div class="logo-marq"><div class="logo-row">
-      <span><svg class="i"><use href="#msg"/></svg>WhatsApp</span>
-      <span><svg class="i"><use href="#card"/></svg>Mercado Pago</span>
-      <span><svg class="i"><use href="#sheet"/></svg>Google Sheets</span>
-      <span><svg class="i"><use href="#db"/></svg>Tango · SAP</span>
-      <span><svg class="i"><use href="#users"/></svg>HubSpot</span>
-      <span><svg class="i"><use href="#cart"/></svg>Tienda Nube · MeLi</span>
-      <span><svg class="i"><use href="#spark"/></svg>OpenAI</span>
-    </div></div>
-  </div>
-</div>
-
-<section id="soluciones" aria-labelledby="sol-h">
-  <div class="container">
-    <div class="head">
-      <div class="rv"><span class="label">Soluciones</span><h2 class="h2 grad" id="sol-h">Tecnología que trabaja <em>por y para vos.</em></h2></div>
-      <p class="lede rv d1">No necesitás programadores ni cambiar tus programas actuales. Construimos robots que asumen el trabajo repetitivo de punta a punta.</p>
-    </div>
-    <div class="bento">
-      <article class="spot tile t-a rv">
-        <h3>Integración total de software</h3>
-        <p>Conectamos plataformas que hoy no se hablan: WhatsApp, planillas, facturación, cobros y bancos. Fin al copiado manual de datos.</p>
-        <div class="viz hub" aria-hidden="true">
-          <svg viewBox="0 0 600 200" preserveAspectRatio="none"><g stroke="rgba(255,255,255,.14)" fill="none" stroke-dasharray="3 5"><path d="M300 100 L96 40"/><path d="M300 100 L96 160"/><path d="M300 100 L504 40"/><path d="M300 100 L504 160"/></g></svg>
-          <span class="core"><svg class="i"><use href="#logo"/></svg></span>
-          <span class="pin" style="left:16%;top:20%"><svg class="i" style="color:#6EE7A0"><use href="#msg"/></svg>WhatsApp</span>
-          <span class="pin" style="left:84%;top:20%"><svg class="i" style="color:#7DD3FC"><use href="#db"/></svg>Tango</span>
-          <span class="pin" style="left:16%;top:80%"><svg class="i" style="color:#86EFAC"><use href="#sheet"/></svg>Excel</span>
-          <span class="pin" style="left:84%;top:80%"><svg class="i" style="color:#7DD3FC"><use href="#card"/></svg>Mercado Pago</span>
-        </div>
-      </article>
-      <article class="spot tile t-b rv d1">
-        <h3>IA que lee y entiende</h3>
-        <p>OCR para facturas en PDF: extrae importes, valida y clasifica.</p>
-        <div class="viz" aria-hidden="true">
-          <div class="inv"><div class="scanline"></div>
-            <div class="inv-row"><span>Proveedor</span><b>Insumos del Sur</b></div>
-            <div class="inv-row hl"><span>CUIT</span><b>30-71234567-8</b></div>
-            <div class="inv-row"><span>Neto</span><b>$ 152.314</b></div>
-            <div class="inv-row hl"><span>IVA 21%</span><b>$ 31.986</b></div>
-            <div class="inv-row"><span>Total</span><b>$ 184.300</b></div>
-          </div>
-        </div>
-      </article>
-      <article class="spot tile t-c rv">
-        <h3>Ejecución 24/7 desatendida</h3>
-        <p>Circuitos que operan día y noche. Tu empresa responde aun cerrada.</p>
-        <div class="viz" aria-hidden="true">
-          <div class="uptime-h"><span>Disponibilidad · 30 días</span><b>99,9%</b></div>
-          <div class="bars" id="bars"></div>
-          <div class="uptime-f"><span>hace 30 días</span><span>hoy</span></div>
-        </div>
-      </article>
-      <article class="spot tile t-d rv d1">
-        <h3>WhatsApp que vende y cobra</h3>
-        <p>Atención, turnos y cobranzas con link de pago, al instante.</p>
-        <div class="viz chat" aria-hidden="true">
-          <div class="bub in">Hola, ¿me pasan el saldo de la cuenta?</div>
-          <div class="bub out">¡Hola Martín! Tu saldo es $ 48.200. Podés abonarlo acá:<br><span class="pay">Pagar con Mercado Pago</span><small>09:12 ✓✓</small></div>
-        </div>
-      </article>
-      <article class="spot tile t-e rv d2">
-        <h3>Reportes que llegan solos</h3>
-        <p>Ventas, cobros y alertas en tu WhatsApp a las 8:00 AM.</p>
-        <div class="viz" aria-hidden="true">
-          <div class="rep">
-            <div class="rep-h"><span>Resumen diario</span><b>08:00</b></div>
-            <div class="rep-kpis"><div>Ventas<b>$ 2,4M</b><em>+12%</em></div><div>Cobros<b>$ 1,8M</b><em>+6%</em></div><div>Alertas<b>2</b><em>stock</em></div></div>
-            <svg class="spark" viewBox="0 0 200 46" preserveAspectRatio="none"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8B9CFF" stop-opacity=".35"/><stop offset="1" stop-color="#8B9CFF" stop-opacity="0"/></linearGradient></defs><path d="M0 38 L20 34 L40 36 L60 26 L80 29 L100 20 L120 23 L140 14 L160 17 L180 8 L200 6 L200 46 L0 46Z" fill="url(#sg)"/><path d="M0 38 L20 34 L40 36 L60 26 L80 29 L100 20 L120 23 L140 14 L160 17 L180 8 L200 6" fill="none" stroke="#B4BFFF" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<div class="container">
-  <div class="metrics rv">
-    <div class="metric"><b class="grad" data-count="40" data-pre="+" data-suf=" hs">+40 hs</b><span>ahorradas al mes por persona en gestión manual</span></div>
-    <div class="metric"><b class="grad">0%</b><span>margen de error en transcripción de datos</span></div>
-    <div class="metric"><b class="grad">24/7</b><span>operación continua, también fines de semana y feriados</span></div>
-    <div class="metric"><b class="grad" data-count="15" data-pre="&lt;" data-suf=" días">&lt;15 días</b><span>para tener tu primer flujo en producción</span></div>
-  </div>
-</div>
-
-<section id="demo" aria-labelledby="demo-h">
-  <div class="container">
-    <div class="head">
-      <div class="rv"><span class="label">Demo en vivo</span><h2 class="h2 grad" id="demo-h">Probá la IA con <em>tu propia factura.</em></h2></div>
-      <p class="lede rv d1">Subí una factura en PDF o una foto y mirá cómo la leemos, la validamos con el QR de ARCA y la dejamos lista para cargar en tu sistema. En segundos.</p>
-    </div>
-    <div class="spot demo rv">
-      <div class="demo-in">
-        <label class="drop" id="drop" for="demoFile" tabindex="0">
-          <input type="file" id="demoFile" accept="application/pdf,image/jpeg,image/png,image/webp" class="sr-only" tabindex="-1">
-          <span class="drop-ic"><svg class="i"><use href="#file"/></svg></span>
-          <b>Arrastrá tu factura acá</b>
-          <span>o hacé clic para elegir un PDF o una foto (hasta 3 MB)</span>
-        </label>
-        <div class="demo-prev" id="demoPrev" hidden>
-          <img id="demoImg" alt="Vista previa del comprobante">
-          <div><b id="demoName"></b><span id="demoSize"></span></div>
-          <button type="button" id="demoReset" class="btn btn-ghost btn-sm">Probar otra</button>
-        </div>
-        <button class="btn btn-ghost" id="demoSample" type="button"><svg class="i i-sm"><use href="#spark"/></svg>Usar una factura de ejemplo</button>
-        <p class="demo-priv"><svg class="i i-sm"><use href="#lock"/></svg>No guardamos tus archivos: se procesan y se descartan. Si preferís, probá con la factura de ejemplo.</p>
-      </div>
-      <div class="demo-out" aria-live="polite">
-        <ol class="dsteps" id="dsteps">
-          <li><span class="ds-ic"></span>Leyendo el archivo</li>
-          <li><span class="ds-ic"></span>Extrayendo datos con IA</li>
-          <li><span class="ds-ic"></span>Validando con el QR de ARCA</li>
-          <li><span class="ds-ic"></span>Listo para cargar en tu ERP</li>
-        </ol>
-        <div class="demo-empty" id="demoEmpty">
-          <div class="sk h"></div><div class="sk w40"></div>
-          <div class="sk-grid"><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
-          <div class="sk w80"></div><div class="sk"></div>
-          <p>Los datos de tu factura van a aparecer acá.</p>
-        </div>
-        <div class="demo-res" id="demoRes" hidden></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="casos" aria-labelledby="cases-h">
-  <div class="container">
-    <div class="head">
-      <div class="rv"><span class="label">Casos de uso</span><h2 class="h2 grad" id="cases-h">Procesos manuales convertidos en <em>flujos autónomos.</em></h2></div>
-      <p class="lede rv d1">Empresas que eliminaron tareas repetitivas y cuellos de botella conectando las herramientas que ya usan.</p>
-    </div>
-    <div class="cases-wrap rv">
-      <div class="case-list" role="tablist" aria-label="Casos de uso" id="caseList"></div>
-      <div class="spot case-panel" role="tabpanel" id="casePanel" tabindex="0"></div>
-    </div>
-    <div class="custom-row rv">
-      <div><b>¿Tenés un proceso manual particular?</b><p>Si sigue una regla clara y repetitiva, podemos automatizarlo sin cambiar tus sistemas.</p></div>
-      <a href="#contacto" class="btn btn-ghost">Consultar mi caso <svg class="i i-sm arrow"><use href="#arrow"/></svg></a>
-    </div>
-  </div>
-</section>
-
-<section id="rubros" style="padding-top:0" aria-labelledby="ind-h">
-  <div class="container">
-    <div class="head">
-      <div class="rv"><span class="label">Rubros</span><h2 class="h2 grad" id="ind-h">Pensado para cómo opera <em>tu negocio.</em></h2></div>
-      <p class="lede rv d1">Cada industria tiene sus propios cuellos de botella. Así impacta la automatización según tu actividad.</p>
-    </div>
-    <div class="ind rv">
-      <article><span class="ic"><svg class="i"><use href="#store"/></svg></span><h3>Comercios y e-commerce</h3><p>Stock sincronizado entre mostrador, Tienda Nube y Mercado Libre, facturación por cada cobro y atención 24/7.</p></article>
-      <article><span class="ic"><svg class="i"><use href="#brief"/></svg></span><h3>Estudios profesionales</h3><p>Lectura OCR de facturas y contratos, recordatorios de vencimientos a clientes y turnos sincronizados.</p></article>
-      <article><span class="ic"><svg class="i"><use href="#truck"/></svg></span><h3>Distribuidoras y mayoristas</h3><p>Pedidos por WhatsApp con listas de precios personalizadas, aviso de despachos y gestión de cobranzas.</p></article>
-      <article><span class="ic"><svg class="i"><use href="#pulse"/></svg></span><h3>Salud, clínicas y estética</h3><p>Agenda inteligente de turnos, confirmación automática por WhatsApp y menos ausentismo.</p></article>
-      <article><span class="ic"><svg class="i"><use href="#wrench"/></svg></span><h3>Servicios y mantenimiento</h3><p>Partes diarios a técnicos, cotizaciones automáticas en PDF y firma digital de conformidad.</p></article>
-      <article><span class="ic"><svg class="i"><use href="#factory"/></svg></span><h3>Fábricas y talleres</h3><p>Seguimiento de órdenes de producción, alertas de insumos críticos y reportes semanales.</p></article>
-    </div>
-  </div>
-</section>
-
-<section id="proceso" style="padding-top:0" aria-labelledby="proc-h">
-  <div class="container">
-    <div class="head">
-      <div class="rv"><span class="label">Proceso</span><h2 class="h2 grad" id="proc-h">De la idea a producción en <em>semanas</em>, no meses.</h2></div>
-      <p class="lede rv d1">Un método estructurado, sin riesgos y sin interrumpir tu operación diaria.</p>
-    </div>
+    <div class="proc-steps">
     <ol class="steps">
       <li class="step rv"><span class="step-n">01</span><h3>Diagnóstico y mapeo</h3><p>Revisamos qué herramientas usás y detectamos las tareas que consumen más tiempo o generan errores.</p><span class="when">Semana 1</span></li>
       <li class="step rv d1"><span class="step-n">02</span><h3>Diseño de arquitectura</h3><p>Definimos el camino de los datos (APIs, webhooks, credenciales cifradas) cuidando tu privacidad.</p><span class="when">Semana 1</span></li>
       <li class="step rv d2"><span class="step-n">03</span><h3>Desarrollo y pruebas</h3><p>Construimos el flujo en un entorno seguro y probamos casos extremos antes de salir a producción.</p><span class="when">Semana 2</span></li>
       <li class="step rv d3"><span class="step-n">04</span><h3>Puesta en marcha</h3><p>Desplegamos, capacitamos brevemente a tu equipo y monitoreamos el funcionamiento 24/7.</p><span class="when">Día 15</span></li>
     </ol>
+    </div>
+  <div class="metrics rv">
+    <div class="metric"><b class="grad" data-count="40" data-pre="+" data-suf=" hs">+40 hs</b><span>ahorradas al mes por persona en gestión manual</span></div>
+    <div class="metric"><b class="grad">0%</b><span>margen de error en transcripción de datos</span></div>
+    <div class="metric"><b class="grad">24/7</b><span>operación continua, también fines de semana y feriados</span></div>
+    <div class="metric"><b class="grad" data-count="15" data-pre="&lt;" data-suf=" días">&lt;15 días</b><span>para tener tu primer flujo en producción</span></div>
   </div>
-</section>
-
-<section id="ahorro" style="padding-top:0" aria-labelledby="calc-h">
-  <div class="container">
-    <div class="head center">
-      <div class="rv"><span class="label">Calculadora</span><h2 class="h2 grad" id="calc-h">¿Cuánto te cuesta hacerlo <em>a mano?</em></h2></div>
-      <p class="lede rv d1">Ajustá los valores según tu equipo y mirá el impacto en horas y dinero recuperado.</p>
-    </div>
-    <div class="spot calc rv">
-      <div class="calc-in">
-        <div class="rf"><label for="people">Colaboradores en administración / ventas <output id="o1" for="people">3 personas</output></label><input class="range" id="people" type="range" min="1" max="15" value="3"><div class="scale" aria-hidden="true"><span>1</span><span>15</span></div></div>
-        <div class="rf"><label for="hours">Horas semanales en tareas repetitivas <output id="o2" for="hours">12 hs</output></label><input class="range" id="hours" type="range" min="4" max="30" value="12"><div class="scale" aria-hidden="true"><span>4 hs</span><span>30 hs</span></div></div>
-        <div class="rf"><label for="cost">Costo promedio por hora <output id="o3" for="cost">USD 8</output></label><input class="range" id="cost" type="range" min="4" max="25" value="8"><div class="scale" aria-hidden="true"><span>USD 4</span><span>USD 25</span></div></div>
-      </div>
-      <div class="calc-out" aria-live="polite">
-        <div><div class="out-l">Horas recuperadas por mes</div><div class="out-v" id="rH">144</div><p class="out-s">para enfocarte en clientes y ventas.</p></div>
-        <hr>
-        <div><div class="out-l">Ahorro anual estimado</div><div class="out-v money" id="rM">USD 13.824</div><p class="out-s">en horas operativas y errores manuales.</p></div>
-        <a href="#contacto" class="btn btn-white">Quiero recuperar este tiempo <svg class="i i-sm arrow"><use href="#arrow"/></svg></a>
-        <p class="fine">Estimación orientativa (4 semanas por mes). En el diagnóstico calculamos el número real.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq" style="padding-top:0" aria-labelledby="faq-h">
-  <div class="container faq">
-    <div class="faq-side rv">
-      <span class="label">FAQ</span>
-      <h2 class="h2 grad" id="faq-h">Preguntas <em>frecuentes.</em></h2>
-      <p class="lede">Respuestas transparentes para que tomes la mejor decisión para tu PyME.</p>
-      <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://wa.me/5491136826065?text=Hola%20Automatika%2C%20quiero%20consultar%20por%20una%20soluci%C3%B3n%20de%20automatizaci%C3%B3n%20para%20mi%20empresa.">Hacer otra pregunta <svg class="i i-sm arrow"><use href="#arrow"/></svg></a>
-    </div>
-    <div class="faq-q rv d1">
-      <details open><summary>¿Tenemos que cambiar los sistemas que ya usamos?<span class="pm" aria-hidden="true"><svg class="i i-sm"><use href="#plus"/></svg></span></summary><p>No, en absoluto. Trabajamos sobre el software que tu empresa ya tiene (Google Sheets, Excel, WhatsApp, sistemas de facturación, Tango, Bejerman, SAP o cualquier CRM). Creamos puentes digitales para que se comuniquen entre sí de forma transparente.</p></details>
-      <details><summary>¿Cuánto tiempo demora ver el primer proceso funcionando?<span class="pm" aria-hidden="true"><svg class="i i-sm"><use href="#plus"/></svg></span></summary><p>El primer circuito productivo queda operando y validado en menos de 15 días corridos. Priorizamos el cuello de botella más urgente para que percibas el retorno de inmediato.</p></details>
-      <details><summary>¿Es seguro para los datos de mi empresa?<span class="pm" aria-hidden="true"><svg class="i i-sm"><use href="#plus"/></svg></span></summary><p>Totalmente. Todos los flujos usan cifrado SSL/TLS de extremo a extremo. No almacenamos datos confidenciales ni bancarios: solo programamos la tubería por donde viaja la información entre tus propios sistemas.</p></details>
-      <details><summary>¿Qué pasa si un sistema externo se actualiza?<span class="pm" aria-hidden="true"><svg class="i i-sm"><use href="#plus"/></svg></span></summary><p>Contamos con monitoreo continuo y soporte de mantenimiento. Si una plataforma conectada (WhatsApp, tu pasarela de cobros o tu ERP) cambia su integración, aplicamos las adaptaciones para garantizar estabilidad 24/7.</p></details>
-      <details><summary>¿Mi negocio es muy chico para justificar esto?<span class="pm" aria-hidden="true"><svg class="i i-sm"><use href="#plus"/></svg></span></summary><p>Al contrario: los negocios pequeños son los que más sufren al hacer todo a pulmón. Automatizar la facturación o la atención por WhatsApp le devuelve al dueño entre 15 y 20 horas por semana para vender y crecer.</p></details>
-    </div>
   </div>
 </section>
 
@@ -916,19 +837,10 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
     <div class="rv">
       <span class="label">Diagnóstico sin cargo</span>
       <h2 class="h2 grad" id="ct-h">Empecemos a automatizar <em>tu empresa.</em></h2>
-      <p class="lede">En una videollamada de 20 minutos analizamos tus procesos, detectamos cuellos de botella y te mostramos el plan exacto para recuperar horas.</p>
-      <ul class="gets">
-        <li><svg class="i"><use href="#check"/></svg><div><b>Mapeo de tareas críticas</b><p>Qué tareas repetitivas le quitan más tiempo a tu equipo hoy.</p></div></li>
-        <li><svg class="i"><use href="#check"/></svg><div><b>Plan de conexión a medida</b><p>Cómo conectar WhatsApp, Excel, cobros, CRM y tu software actual.</p></div></li>
-        <li><svg class="i"><use href="#check"/></svg><div><b>Cálculo de ahorro y ROI</b><p>Cuántas horas liberás y en cuántas semanas recuperás la inversión.</p></div></li>
-        <li><svg class="i"><use href="#check"/></svg><div><b>Cero compromiso</b><p>Te llevás el diagnóstico técnico completo, sin obligación comercial.</p></div></li>
-      </ul>
-      <div class="assure"><span><svg class="i"><use href="#clock"/></svg>Respuesta en &lt; 2 hs hábiles</span><span><svg class="i"><use href="#shield"/></svg>100% confidencial</span></div>
-      <div class="wa-line"><p>¿Preferís respuesta instantánea?</p><a target="_blank" rel="noopener" href="https://wa.me/5491136826065?text=Hola%20Automatika%2C%20quiero%20coordinar%20una%20sesi%C3%B3n%20de%20diagn%C3%B3stico%20sin%20cargo%20para%20mi%20empresa."><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Chateá con un ingeniero</a></div>
-    </div>
-    <div class="spot form rv d1">
-      <h3>Solicitá tu diagnóstico</h3>
-      <p>Completá el formulario y coordinamos según tu disponibilidad.</p>
+      <p class="lede">En una videollamada de 20 minutos analizamos tus procesos y te mostramos el plan exacto para recuperar horas. Sin compromiso.</p>
+      <div class="spot form">
+        <h3>Solicitá tu diagnóstico</h3>
+        <p>Completá el formulario y coordinamos según tu disponibilidad.</p>
       <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
         <input type="hidden" name="access_key" value="4b9bc2f9-dd3b-4551-8824-b06f9cdb059b">
         <input type="hidden" name="subject" value="Nuevo contacto desde Automatika Web">
@@ -947,18 +859,61 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
         <button class="btn btn-white" id="fsubmit" type="submit">Solicitar diagnóstico sin cargo <svg class="i i-sm arrow"><use href="#arrow"/></svg></button>
         <p class="priv"><svg class="i i-sm"><use href="#lock"/></svg>Tus datos son confidenciales. Nada de spam.</p>
       </form>
+      </div>
+    </div>
+    <div class="ct-side rv d1">
+      <h3 class="side-h" id="faq">Preguntas frecuentes</h3>
+      <div class="faq-q">
+      <details open><summary>¿Tenemos que cambiar los sistemas que ya usamos?<span class="pm" aria-hidden="true"><svg class="i i-sm"><use href="#plus"/></svg></span></summary><p>No, en absoluto. Trabajamos sobre el software que tu empresa ya tiene (Google Sheets, Excel, WhatsApp, sistemas de facturación, Tango, Bejerman, SAP o cualquier CRM). Creamos puentes digitales para que se comuniquen entre sí de forma transparente.</p></details>
+      <details><summary>¿Cuánto tiempo demora ver el primer proceso funcionando?<span class="pm" aria-hidden="true"><svg class="i i-sm"><use href="#plus"/></svg></span></summary><p>El primer circuito productivo queda operando y validado en menos de 15 días corridos. Priorizamos el cuello de botella más urgente para que percibas el retorno de inmediato.</p></details>
+      <details><summary>¿Es seguro para los datos de mi empresa?<span class="pm" aria-hidden="true"><svg class="i i-sm"><use href="#plus"/></svg></span></summary><p>Totalmente. Todos los flujos usan cifrado SSL/TLS de extremo a extremo. No almacenamos datos confidenciales ni bancarios: solo programamos la tubería por donde viaja la información entre tus propios sistemas.</p></details>
+      <details><summary>¿Qué pasa si un sistema externo se actualiza?<span class="pm" aria-hidden="true"><svg class="i i-sm"><use href="#plus"/></svg></span></summary><p>Contamos con monitoreo continuo y soporte de mantenimiento. Si una plataforma conectada (WhatsApp, tu pasarela de cobros o tu ERP) cambia su integración, aplicamos las adaptaciones para garantizar estabilidad 24/7.</p></details>
+      <details><summary>¿Mi negocio es muy chico para justificar esto?<span class="pm" aria-hidden="true"><svg class="i i-sm"><use href="#plus"/></svg></span></summary><p>Al contrario: los negocios pequeños son los que más sufren al hacer todo a pulmón. Automatizar la facturación o la atención por WhatsApp le devuelve al dueño entre 15 y 20 horas por semana para vender y crecer.</p></details>
+      </div>
+      <div class="assure"><span><svg class="i"><use href="#clock"/></svg>Respuesta en &lt; 2 hs hábiles</span><span><svg class="i"><use href="#shield"/></svg>100% confidencial</span><span><svg class="i"><use href="#check"/></svg>Primer flujo en &lt; 15 días</span></div>
+      <div class="wa-line"><p>¿Preferís respuesta instantánea?</p><a target="_blank" rel="noopener" href="https://wa.me/5491136826065?text=Hola%20Automatika%2C%20quiero%20coordinar%20una%20sesi%C3%B3n%20de%20diagn%C3%B3stico%20sin%20cargo%20para%20mi%20empresa."><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#wa"/></svg>Chateá con un ingeniero</a></div>
     </div>
   </div>
 </section>
 </main>
+
+<dialog class="dlg" id="caseDlg" aria-labelledby="caseDlgT">
+  <div class="dlg-in">
+    <button type="button" class="dlg-x" aria-label="Cerrar"><svg class="i"><use href="#close"/></svg></button>
+    <div id="caseDlgBody"></div>
+  </div>
+</dialog>
+
+<dialog class="dlg dlg-wide" id="calcDlg" aria-labelledby="calcT">
+  <div class="dlg-in">
+    <button type="button" class="dlg-x" aria-label="Cerrar"><svg class="i"><use href="#close"/></svg></button>
+    <span class="label">Calculadora</span>
+    <h3 class="dlg-t" id="calcT">¿Cuánto te cuesta hacerlo <em>a mano?</em></h3>
+    <p class="cp-d">Ajustá los valores según tu equipo y mirá el impacto en horas y dinero recuperado.</p>
+    <div class="calc">
+      <div class="calc-in">
+        <div class="rf"><label for="people">Colaboradores en administración / ventas <output id="o1" for="people">3 personas</output></label><input class="range" id="people" type="range" min="1" max="15" value="3"><div class="scale" aria-hidden="true"><span>1</span><span>15</span></div></div>
+        <div class="rf"><label for="hours">Horas semanales en tareas repetitivas <output id="o2" for="hours">12 hs</output></label><input class="range" id="hours" type="range" min="4" max="30" value="12"><div class="scale" aria-hidden="true"><span>4 hs</span><span>30 hs</span></div></div>
+        <div class="rf"><label for="cost">Costo promedio por hora <output id="o3" for="cost">USD 8</output></label><input class="range" id="cost" type="range" min="4" max="25" value="8"><div class="scale" aria-hidden="true"><span>USD 4</span><span>USD 25</span></div></div>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <div><div class="out-l">Horas recuperadas por mes</div><div class="out-v" id="rH">144</div><p class="out-s">para enfocarte en clientes y ventas.</p></div>
+        <hr>
+        <div><div class="out-l">Ahorro anual estimado</div><div class="out-v money" id="rM">USD 13.824</div><p class="out-s">en horas operativas y errores manuales.</p></div>
+        <a href="#contacto" class="btn btn-white" data-close>Quiero recuperar este tiempo <svg class="i i-sm arrow"><use href="#arrow"/></svg></a>
+        <p class="fine">Estimación orientativa (4 semanas por mes). En el diagnóstico calculamos el número real.</p>
+      </div>
+    </div>
+  </div>
+</dialog>
 
 <footer class="footer">
   <div class="container">
     <div class="f-top">
       <div><a href="#top" class="logo"><span class="logo-mark"><svg class="i"><use href="#logo"/></svg></span>Automatika</a><p class="tag">Automatización inteligente de procesos para PyMEs y negocios.</p></div>
       <div class="f-cols">
-        <div><h4>Producto</h4><a href="#soluciones">Soluciones</a><a href="#demo">Demo</a><a href="#casos">Casos de uso</a><a href="#rubros">Rubros</a></div>
-        <div><h4>Empresa</h4><a href="#proceso">Proceso</a><a href="#ahorro">Calculadora</a><a href="#faq">FAQ</a></div>
+        <div><h4>Producto</h4><a href="#demo">Demo</a><a href="#automatizaciones">Automatizaciones</a><a href="#calculadora" data-open="calc">Calculadora</a></div>
+        <div><h4>Empresa</h4><a href="#proceso">Cómo trabajamos</a><a href="#faq">Preguntas</a></div>
         <div><h4>Contacto</h4><a href="#contacto">Diagnóstico</a><a target="_blank" rel="noopener" href="https://wa.me/5491136826065">WhatsApp</a></div>
       </div>
     </div>
@@ -1012,9 +967,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   const tick = () => { nodes.forEach(n => n.classList.remove('lit')); nodes[order[step % order.length]].classList.add('lit'); step++; if (step % order.length === 0) addRun(true); };
   if (!reduce) { tick(); setInterval(tick, 900); }
 
-  const bars = $('#bars'); for (let k = 0; k < 30; k++) { const i = document.createElement('i'); if (k === 9 || k === 22) i.className = 'lo'; bars.appendChild(i); }
-
-  // Use cases
+  // Use cases (datos de las automatizaciones)
   const cases = [
     {ic:'coins', t:'Conciliación bancaria', cat:'Finanzas & Tesorería', kpi:'5 días → 2 hs', kl:'tiempo de cierre', h:'Conciliación bancaria y cierre contable automático', d:'Conexión directa entre tus extractos bancarios y tu sistema contable para liquidar balances sin hojas de cálculo manuales.', b:'Descargar extractos de varias cuentas en Excel y cruzar celda por celda contra facturas y compras, rastreando diferencias de centavos a mano.', a:'El robot descarga extractos diarios por API, cruza cobros y transferencias con tu ERP, emite el balance y notifica solo las excepciones.', s:['APIs bancarias','SAP / Tango','Google Sheets']},
     {ic:'file', t:'Carga OCR de facturas', cat:'Finanzas & Compras', kpi:'−90%', kl:'tiempo de carga', h:'Lectura y carga OCR de facturas de proveedores', d:'Extracción inteligente de datos desde PDFs o imágenes de comprobantes y carga directa al sistema de gestión.', b:'Abrir decenas de correos, tipear a mano proveedor, ítems, IVA y totales en el ERP, y perseguir firmas de aprobación por email.', a:'La IA lee el PDF al recibirlo, valida contra la orden de compra, carga el gasto en el ERP y pide aprobación en 1 clic.', s:['OCR con IA','Gmail / Outlook','ERP / Excel']},
@@ -1025,21 +978,6 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
     {ic:'receipt', t:'Cotizaciones al instante', cat:'Ventas & Operaciones', kpi:'30 s', kl:'por cotización', h:'Generación instantánea de cotizaciones y propuestas', d:'Presupuestos personalizados en PDF con precios actualizados y seguimiento de apertura en tiempo real.', b:'Copiar y pegar listas de precios en Word, calcular descuentos a mano y exportar a PDF. Hasta 48 horas para enviar la propuesta.', a:'Elegís los servicios en el CRM y se genera un PDF con diseño corporativo, botón de aceptación digital y aviso de apertura.', s:['PDF Generator','DocuSign','HubSpot / CRM']},
     {ic:'chart', t:'Reporte ejecutivo diario', cat:'Operaciones & Dirección', kpi:'8:00 AM', kl:'todos los días', h:'Reporte ejecutivo matutino consolidado por WhatsApp', d:'Ventas del día anterior, cobros pendientes y alertas críticas consolidadas de noche y enviadas a los socios.', b:'El gerente pasa 2 horas cada mañana abriendo 4 sistemas distintos, descargando planillas y armando un resumen en Excel.', a:'Un flujo nocturno extrae los datos de todas las fuentes y a las 8:00 envía al WhatsApp de los socios un resumen con métricas y alertas.', s:['WhatsApp','SQL','Power BI / Sheets']}
   ];
-  const list = $('#caseList'), panel = $('#casePanel');
-  const show = (k, scroll) => {
-    const c = cases[k];
-    [...list.children].forEach((b, j) => { b.setAttribute('aria-selected', j === k); b.tabIndex = j === k ? 0 : -1; });
-    panel.setAttribute('aria-labelledby', 'ct' + k);
-    panel.innerHTML = `<div class="fade"><div class="cp-top"><span class="cp-cat">${c.cat}</span><div class="cp-kpi"><b>${c.kpi}</b><span>${c.kl}</span></div></div>
-      <h3>${c.h}</h3><p class="cp-d">${c.d}</p>
-      <div class="ba"><div class="b4"><h4><svg class="i i-sm"><use href="#xc"/></svg>Antes</h4>${c.b}</div><div class="af"><h4><svg class="i i-sm"><use href="#checkc"/></svg>Con Automatika</h4>${c.a}</div></div>
-      <div class="cp-foot"><div class="stack">${c.s.map(x => `<span>${x}</span>`).join('')}</div><a href="#contacto" class="btn btn-white btn-sm" data-case="${c.h}">Quiero automatizar esto <svg class="i i-sm arrow"><use href="#arrow"/></svg></a></div></div>`;
-    panel.querySelector('[data-case]').addEventListener('click', e => { const m = $('#f-msg'); if (!m.value) m.value = 'Me interesa automatizar: ' + e.currentTarget.dataset.case + '. '; });
-    if (scroll && innerWidth < 960) { const t = list.children[k]; list.scrollTo({left: t.offsetLeft - 12, behavior: reduce ? 'auto' : 'smooth'}); }
-  };
-  cases.forEach((c, k) => { const b = document.createElement('button'); b.className = 'case-tab'; b.type = 'button'; b.setAttribute('role', 'tab'); b.id = 'ct' + k; b.setAttribute('aria-controls', 'casePanel'); b.innerHTML = `<span class="ct-ic"><svg class="i i-sm"><use href="#${c.ic}"/></svg></span><span><b>${c.t}</b><small>${c.cat}</small></span>`; b.onclick = () => show(k, true); list.appendChild(b); });
-  list.addEventListener('keydown', e => { const tabs = [...list.children]; const i = tabs.indexOf(document.activeElement); if (i < 0) return; let n = null; if (['ArrowDown','ArrowRight'].includes(e.key)) n = (i + 1) % tabs.length; if (['ArrowUp','ArrowLeft'].includes(e.key)) n = (i - 1 + tabs.length) % tabs.length; if (n !== null) { e.preventDefault(); show(n, true); tabs[n].focus(); } });
-  show(0);
 
   // Calculator
   const fmt = n => n.toLocaleString('es-AR');
@@ -1082,11 +1020,6 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   // Hero spotlight follows the pointer
   const hero = $('.hero'), hs = $('.hero-spot');
   hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); hs.style.setProperty('--mx', (e.clientX - r.left) + 'px'); hs.style.setProperty('--my', (e.clientY - r.top + 64) + 'px'); });
-
-  // Logo marquee: duplicate the set for a seamless loop
-  const lr = $('.logo-marq .logo-row');
-  if (!reduce) [...lr.children].forEach(c => { const d = c.cloneNode(true); d.setAttribute('aria-hidden', 'true'); lr.appendChild(d); });
-  else lr.style.cssText = 'flex-wrap:wrap;justify-content:center;width:auto;animation:none;padding:0;gap:14px 36px';
 
   // Count-up metrics
   const counters = $$('[data-count]');
@@ -1259,6 +1192,55 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   D.drop.addEventListener('drop', e => procesar(e.dataTransfer.files[0]));
   D.sample.addEventListener('click', async () => { try { procesar(await facturaEjemplo(), 'Factura de ejemplo'); } catch (err) { mostrarError(err.message); } });
   D.reset.addEventListener('click', () => { if (ocupado) return; D.prev.hidden = true; D.drop.hidden = false; D.file.value = ''; clearSteps(); D.res.hidden = true; D.empty.hidden = false; D.drop.focus(); });
+  // ---- Automatizaciones: galería con filtro por rubro y detalle en ventana ----
+  const rubrosDe = [
+    ['comercio', 'estudios', 'distribuidoras', 'industria'],
+    ['comercio', 'estudios', 'distribuidoras', 'servicios', 'industria'],
+    ['comercio', 'estudios', 'salud', 'servicios'],
+    ['distribuidoras', 'estudios', 'salud', 'servicios'],
+    ['comercio', 'distribuidoras', 'industria'],
+    ['salud', 'servicios', 'industria', 'estudios'],
+    ['servicios', 'industria', 'distribuidoras'],
+    ['comercio', 'estudios', 'distribuidoras', 'salud', 'servicios', 'industria'],
+  ];
+  const textoRubro = {
+    comercio: 'Stock sincronizado entre mostrador, Tienda Nube y Mercado Libre, facturación por cada cobro y atención 24/7 por WhatsApp.',
+    estudios: 'Contadores, abogados y consultores: lectura de facturas y contratos, recordatorios de vencimientos y turnos sincronizados.',
+    distribuidoras: 'Pedidos por WhatsApp con listas de precios personalizadas, aviso de despachos y gestión de cobranzas.',
+    salud: 'Consultorios y centros de estética: agenda inteligente, confirmación automática de turnos y menos ausentismo.',
+    servicios: 'Partes diarios a técnicos, cotizaciones automáticas en PDF y firma digital de conformidad desde el celular.',
+    industria: 'Seguimiento de órdenes de producción, alertas de insumos críticos y reportes semanales automáticos.',
+  };
+  const grid = $('#autoGrid'), dlgCaso = $('#caseDlg'), dlgCalc = $('#calcDlg');
+  grid.innerHTML = cases.map((c, k) => `<button type="button" class="auto spot" data-k="${k}"><span class="a-top"><span class="a-ic"><svg class="i"><use href="#${c.ic}"/></svg></span><span class="a-cat">${c.cat}</span></span><b>${c.h}</b><p>${c.d}</p><span class="a-kpi"><em>${c.kpi}</em><small>${c.kl}</small></span><span class="a-more">Ver antes y después <svg class="i i-sm"><use href="#arrow"/></svg></span></button>`).join('')
+    + `<a href="#contacto" class="auto spot custom"><span class="a-ic"><svg class="i"><use href="#plus"/></svg></span><b>¿Tenés otro proceso manual?</b><p>Si sigue una regla clara y repetitiva, lo podemos automatizar sin cambiar tus sistemas.</p><span class="a-more">Contanos tu caso <svg class="i i-sm"><use href="#arrow"/></svg></span></a>`;
+  grid.querySelectorAll('.spot').forEach(el => el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); el.style.setProperty('--x', (e.clientX - r.left) + 'px'); el.style.setProperty('--y', (e.clientY - r.top) + 'px'); }));
+
+  $$('.rchip').forEach(b => b.addEventListener('click', () => {
+    $$('.rchip').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    const r = b.dataset.r;
+    $('#rubroDesc').textContent = textoRubro[r] || '';
+    grid.querySelectorAll('.auto[data-k]').forEach(el => { el.hidden = r !== 'todos' && !rubrosDe[+el.dataset.k].includes(r); });
+  }));
+
+  const abrirCaso = k => {
+    const c = cases[k];
+    $('#caseDlgBody').innerHTML = `<span class="cp-cat">${c.cat}</span><h3 class="dlg-t" id="caseDlgT">${c.h}</h3><p class="cp-d">${c.d}</p>
+      <div class="dlg-kpi"><b>${c.kpi}</b><span>${c.kl}</span></div>
+      <div class="ba"><div class="b4"><h4><svg class="i i-sm"><use href="#xc"/></svg>Antes</h4>${c.b}</div><div class="af"><h4><svg class="i i-sm"><use href="#checkc"/></svg>Con Automatika</h4>${c.a}</div></div>
+      <div class="cp-foot"><div class="stack">${c.s.map(x => `<span>${x}</span>`).join('')}</div><div class="dlg-act"><button type="button" class="btn btn-ghost btn-sm" data-open="calc">Calcular mi ahorro</button><a href="#contacto" class="btn btn-white btn-sm" data-case="${c.h}">Quiero automatizar esto <svg class="i i-sm arrow"><use href="#arrow"/></svg></a></div></div>`;
+    dlgCaso.showModal();
+  };
+  grid.addEventListener('click', e => { const b = e.target.closest('.auto[data-k]'); if (b) abrirCaso(+b.dataset.k); });
+
+  document.addEventListener('click', e => {
+    const abre = e.target.closest('[data-open="calc"]');
+    if (abre) { e.preventDefault(); setM(false); if (dlgCaso.open) dlgCaso.close(); dlgCalc.showModal(); return; }
+    const caso = e.target.closest('#caseDlg [data-case]');
+    if (caso) { dlgCaso.close(); const m = $('#f-msg'); if (!m.value) m.value = 'Me interesa automatizar: ' + caso.dataset.case + '. '; return; }
+    if (e.target.closest('.dlg-x') || e.target.closest('[data-close]')) { e.target.closest('dialog').close(); return; }
+    if (e.target.matches('dialog.dlg')) e.target.close();
+  });
 })();
 </script>
 </body>
