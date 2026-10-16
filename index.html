@@ -559,7 +559,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 @media (max-width:560px){.demo-in,.demo-out{padding:20px}.dsteps{grid-template-columns:1fr 1fr}.r-fields{grid-template-columns:1fr 1fr}.r-act .btn{width:100%}}
 
 /* ---- Diseño limpio: accesos, automatizaciones, ventanas ---- */
-.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:56px auto 0;max-width:1100px;text-align:left}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:40px auto 0;max-width:1100px;text-align:left}
 .qa{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;border:1px solid var(--line-2);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));backdrop-filter:blur(8px);color:var(--text);transition:border-color .25s,transform .25s,background-color .25s}
 .qa:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .qi{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;flex:none;background:rgba(139,156,255,.1);border:1px solid rgba(139,156,255,.28);color:var(--accent-2)}
@@ -694,11 +694,7 @@ body:has(dialog[open]){overflow:hidden}
     <div class="wm" aria-hidden="true"><div class="wm-flare"></div><div class="wm-base" id="wmBase">Automatika</div><div class="wm-shine">Automatika</div></div>
     <h1 id="h1"><span class="sr-only">Automatika: </span>Tu empresa, funcionando en <em>piloto automático.</em></h1>
     <p class="sub rv d2">Automatizamos las tareas repetitivas de tu empresa con IA. Conectamos <strong>WhatsApp, planillas, cobros y tu ERP</strong> sin cambiar los sistemas que ya usás.</p>
-    <div class="hero-ctas rv d3">
-      <a href="#demo" class="btn btn-white">Probar la demo <svg class="i i-sm arrow"><use href="#arrow"/></svg></a>
-      <a href="#contacto" class="btn btn-ghost">Agendar diagnóstico</a>
-    </div>
-    <div class="quick rv d4">
+    <div class="quick rv d3">
       <a href="#demo" class="qa"><span class="qi"><svg class="i"><use href="#file"/></svg></span><span><b>Probá la demo</b><small>Mirá una factura leerse sola</small></span><svg class="i i-sm go"><use href="#arrow"/></svg></a>
       <a href="#automatizaciones" class="qa"><span class="qi"><svg class="i"><use href="#bolt"/></svg></span><span><b>Automatizaciones</b><small>8 procesos según tu rubro</small></span><svg class="i i-sm go"><use href="#arrow"/></svg></a>
       <a href="#calculadora" class="qa" data-open="calc"><span class="qi"><svg class="i"><use href="#chart"/></svg></span><span><b>Calculá tu ahorro</b><small>Horas y dinero que recuperás</small></span><svg class="i i-sm go"><use href="#arrow"/></svg></a>
