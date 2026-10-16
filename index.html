@@ -634,6 +634,14 @@ body:has(dialog[open]){overflow:hidden}
 #proceso .metrics{margin-top:0}
 .hero{padding-bottom:24px}
 .hero-bg{-webkit-mask-image:linear-gradient(#000 65%,transparent);mask-image:linear-gradient(#000 65%,transparent)}
+/* Encabezado parejo: logo y botón con el mismo alto, radio y acabado */
+.header .logo{font-size:17px;gap:10px}
+.header .logo-mark{width:36px;height:36px;border-radius:10px}
+.header .logo-mark svg{width:19px;height:19px}
+.header-right .btn-white{height:36px;padding:0 16px;border-radius:10px;font-size:14px;font-weight:500;background:linear-gradient(180deg,#fff,#C9CCD4);box-shadow:0 0 0 1px rgba(255,255,255,.12),0 0 24px rgba(139,156,255,.35)}
+.header-right .btn-white:hover{background:linear-gradient(180deg,#fff,#E0E2E8)}
+.menu-btn{width:36px;height:36px}
+@media (max-width:420px){.header-right .btn-white{padding:0 12px;font-size:13px}}
 </style>
 </head>
 <body>
